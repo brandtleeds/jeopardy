@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:align="http://www.w3.org/1999/xhtml"
+      xmlns:style="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Admin Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+    <form th:action="@{/logout}" method="get">
+        <button class="btn btn-md btn-danger btn-block" name="registration"
+                type="Submit">Logout</button>
+    </form>
+
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <span th:utext="${welcome}"></span>
+            </div>
+            <div class="panel-body">
+
+                <style>
+                    table, th{
+                        align: center;
+                        background-color: #2f22f1;
+                        border: 2px solid black;
+                        color: white;
+                        padding: 12px;
+                    }
+                    tr, td {
+                        align: center;
+                        border: 2px solid black;
+                        color: yellow;
+                        padding: 12px;
+                    }
+                </style>
+
+                <table align="center">
+                    <thead align="center">
+                        <div>
+                            <th th:text="${userClues[0][0].category.title}"></th>
+                            <th th:text="${userClues[1][0].category.title}"></th>
+                            <th th:text="${userClues[2][0].category.title}"></th>
+                            <th th:text="${userClues[3][0].category.title}"></th>
+                            <th th:text="${userClues[4][0].category.title}"></th>
+                        </div>
+                    </thead>
+                    <tbody align="center">
+                        <tr>
+                            <td th:text="'$' + ${userClues[0][0].value}"></td>
+                            <td th:text="'$' + ${userClues[1][0].value}"></td>
+                            <td th:text="'$' + ${userClues[2][0].value}"></td>
+                            <td th:text="'$' + ${userClues[3][0].value}"></td>
+                            <td th:text="'$' + ${userClues[4][0].value}"></td>
+                        </tr>
+                        <tr>
+                            <td th:text="'$' + ${userClues[0][1].value}"></td>
+                            <td th:text="'$' + ${userClues[1][1].value}"></td>
+                            <td th:text="'$' + ${userClues[2][1].value}"></td>
+                            <td th:text="'$' + ${userClues[3][1].value}"></td>
+                            <td th:text="'$' + ${userClues[4][1].value}"></td>
+                        </tr>
+                        <tr>
+                            <td th:text="'$' + ${userClues[0][2].value}"></td>
+                            <td th:text="'$' + ${userClues[1][2].value}"></td>
+                            <td th:text="'$' + ${userClues[2][2].value}"></td>
+                            <td th:text="'$' + ${userClues[3][2].value}"></td>
+                            <td th:text="'$' + ${userClues[4][2].value}"></td>
+                        </tr>
+                        <tr>
+                            <td th:text="'$' + ${userClues[0][3].value}"></td>
+                            <td th:text="'$' + ${userClues[1][3].value}"></td>
+                            <td th:text="'$' + ${userClues[2][3].value}"></td>
+                            <td th:text="'$' + ${userClues[3][3].value}"></td>
+                            <td th:text="'$' + ${userClues[4][3].value}"></td>
+                        </tr>
+                        <tr>
+                            <td th:text="'$' + ${userClues[0][4].value}"></td>
+                            <td th:text="'$' + ${userClues[1][4].value}"></td>
+                            <td th:text="'$' + ${userClues[2][4].value}"></td>
+                            <td th:text="'$' + ${userClues[3][4].value}"></td>
+                            <td th:text="'$' + ${userClues[4][4].value}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <span th:utext="${welcome}"></span>
+            </div>
+
+            <div class="panel-body">
+                <p>Answer: </p>
+                <p>Your question - Who / What / Where / When is...</p>
+                <input type="text" id="answer" name="answer"  th:placeholder="answer"
+                       class="form-control" />
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>
