@@ -6,10 +6,10 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserMapper {
 
-        String CREATE_USER = "INSERT INTO `jeopardyGame`.`temperatures` (`temperature`,`latitude`,`longitude`) " +
-                "VALUES (#{temperature}, #{latitude}, #{longitude});";
+        String CREATE_USER = "INSERT INTO `jeopardyGame`.`user` (`email`,`password`,`current_score`, `high_score`) " +
+                "VALUES (#{email}, #{password}, #{current_score}, #{high_score});";
 
-//        @Insert(INPUT_TEMP)
-//        int inputTemp(DBtempLatLong db);
+//        @Create(CREATE_USER)
+//        User createUser(User user);
 
 }

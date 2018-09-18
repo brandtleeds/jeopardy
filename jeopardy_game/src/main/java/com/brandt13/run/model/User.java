@@ -32,7 +32,7 @@ public class User {
     @Column(name = "high_score")
     private int high_score;
     @Column(name = "current_score")
-    private int current_score;
+    private int current_score = 0;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;

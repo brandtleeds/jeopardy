@@ -1,6 +1,5 @@
 package com.brandt13.run.controllers;
 
-import com.brandt13.run.model.Category;
 import com.brandt13.run.model.Clue;
 import com.brandt13.run.model.User;
 import com.brandt13.run.service.GameService;
@@ -33,15 +32,34 @@ public class GameController {
 
         Clue[][] userClues = gameService.singleJeopardy();
 
-//        String[] userCategories = new String[5];
-//        for (int i = 0; i < 5; i++) {
-//            userCategories[i] = userClues[i][0].getCategory().getTitle();
-//        }
+        modelAndView.addObject("welcome", "Single Jeopardy | Welcome " + admin.getEmail() + "!");
 
-        modelAndView.addObject("welcome", "Welcome " + admin.getEmail());
-        modelAndView.addObject("adminMessage","Content Available for Users with User Role");
         modelAndView.addObject("userClues", userClues);
+        modelAndView.addObject("admin", admin);
+
+        //modelAndView.addObject("high_score", admin.getHigh_score());
+
         modelAndView.setViewName("admin/game");
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/admin/doubleJeopardy", method = RequestMethod.GET)
+    public ModelAndView doubleJeopardy(){
+        ModelAndView modelAndView = new ModelAndView();
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User admin = userService.findUserByEmail(auth.getName());
+
+        Clue[][] userClues = gameService.doubleJeopardy();
+
+        modelAndView.addObject("welcome", "Double Jeopardy | Welcome " + admin.getEmail() + "!");
+
+        modelAndView.addObject("userClues", userClues);
+        modelAndView.addObject("admin", admin);
+
+        //modelAndView.addObject("high_score", admin.getHigh_score());
+
+        modelAndView.setViewName("admin/doubleJeopardy");
         return modelAndView;
     }
 }
