@@ -24,11 +24,6 @@ public class GameService {
 
     User user;
 
-    public void playJeopardy(){
-
-
-    }
-
     public Clue[][] singleJeopardy(){
 
         //  This method loads a random 5x5 Single Jeopardy board. The questions are from $100
@@ -235,6 +230,17 @@ public class GameService {
         }
 
         return userClues;
+    }
+
+    public Clue finalJeopardy(){
+
+        Clue finalClue = new Clue();
+
+        String clueQuery = "http://jservice.io/api/random";
+
+        finalClue = restTemplate.getForObject(clueQuery, Clue.class);
+
+        return finalClue;
     }
 
 }

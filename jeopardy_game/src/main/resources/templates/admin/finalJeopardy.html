@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:align="http://www.w3.org/1999/xhtml"
+      xmlns:style="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <title>Single Jeopardy</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+    <form th:action="@{/logout}" method="get">
+        <button class="btn btn-md btn-danger btn-block" name="logout"
+                type="Submit">Logout</button>
+    </form>
+
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <span th:utext="${welcome}"></span>
+            </div>
+            <div class="panel-body">
+                <table align="center" class="t1">
+
+                    <!-- This table is the 5x5 Single Jeopardy board. -->
+
+                    <style>
+                        table.t1 {
+                            border: 2px solid black;
+                            padding: 12px;
+                            table-layout: fixed;
+                            text-align: center;
+                            width: 100%;
+                            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                            font-size: 14px;
+                            font-style: bold;
+                            font-variant: normal;
+                            font-weight: 400;
+                            line-height: 20px;
+                        }
+                        table.t1 th{
+                            border: 2px solid black;
+                            text-align: center;
+                            background-color: #060ce9;
+                            padding: 12px;
+                            color: white;
+                        }
+                        table.t1 td {
+                            background-color: #060ce9;
+                            align: center;
+                            border: 2px solid black;
+                            color: yellow;
+                            padding: 12px;
+                        }
+                    </style>
+
+                    <thead align="center">
+                    <th th:text="${finalClue.category.title}"></th>
+                    <!--<th th:text="${userClues[1][0].category.title}"></th>-->
+                    <!--<th th:text="${userClues[2][0].category.title}"></th>-->
+                    <!--<th th:text="${userClues[3][0].category.title}"></th>-->
+                    <!--<th th:text="${userClues[4][0].category.title}"></th>-->
+                    <!--<th th:text="${userClues[5][0].category.title}"></th>-->
+
+                    </thead>
+
+                    <tbody align="center">
+
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-group" style="margin-top:20px">
+
+        <div class="panel panel-success" style="float: left; width: 45%">
+            <div class="panel-heading">
+                High Score: $<span th:text="${admin.high_score}"> </span> | Current Score: $<span id="user_score" th:text="${admin.current_score}"></span>
+            </div>
+
+            <div class="panel-body">
+
+                <style>
+                    .left-half {
+                      width: 85%;
+                    }
+                </style>
+
+                <div class="left-half">
+                    <p>For $<span id="loadValue"></span>...</p>
+
+                    <span id="loadAnswer" hidden></span>
+                    <!--<span id="loadCurrentCell" hidden></span>-->
+
+                    <p>Your question - Who / What / Where / When is...</p>
+
+                    <input type="text" id="userAnswer" name="userAnswer" th:placeholder="your_question" class="form-control" />
+                    <br>
+
+                    <input type="button" value="Check Answer" th:onclick="|checkAnswer();|"/></button>
+
+                </div>
+            </div>
+
+            <form th:action="@{/admin/gameOver_thumbsUp}" method="get">
+                <button name="doubleJeopardy" id="save" type="Submit">Finish your game!</button>
+            </form>
+
+        </div>
+
+        <div class="right-half">
+            <table class="t2">
+                <style>
+                                table.t2 {
+                                    float: right;
+                                    width: 52%;
+                                    min-height: 380px;
+                                }
+                                table.t2 td {
+                                    background-color: #060ce9;
+                                    font-family: Palatino, URW Palladio L, serif;
+                                    color: white;
+                                    font-size: 26px;
+                                    font-weight: 500;
+                                    padding-right: 90px;
+                                    padding-left: 90px;
+                                    padding-top: 25px;
+                                    padding-top: 25px;
+                                }
+                </style>
+                <td id="displayQuestion" align="center"></td>
+            </table>
+        </div>
+
+    </div>
+
+    <footer></footer>
+    <div style="clear: both;"></div>
+    </br>
+    </footer>
+
+    <!--
+            The following is Javascript that interacts with Thymeleaf. Currently still learning JS, HTML and CSS,
+            so it might be a bit wonky. The only way I've learned so far to connect the variables in the Java
+            model to the HTML & JS is through the form of <span> (although it might be the only way).
+
+    -->
+
+    <script>
+
+                // <![CDATA[
+
+                    (function (global) {
+                        document.getElementById("user_score").innerHTML = global.localStorage.getItem("scoreSharer");
+                    }(window));
+
+                    (function (global) {
+                        document.getElementById("save").addEventListener("click", function () {
+                                     global.localStorage.setItem("scoreSharer", document.getElementById("user_score").innerHTML);
+                        }, false);
+                    }(window));
+
+                    function addText(question){
+
+                            document.getElementById('displayQuestion').innerHTML=question;
+                    }
+
+                    function loadAnswer(answer){
+
+                            document.getElementById('loadAnswer').innerHTML=answer;
+                    }
+
+                    function loadValue(value){
+
+                            document.getElementById('loadValue').innerHTML=value;
+                    }
+
+                    function loadCurrentScore(current_score){
+
+                            document.getElementById('loadCurrentScore').innerHTML=current_score;
+                    }
+
+                    function loadCurrentCell(location){
+
+                            document.getElementById('loadCurrentCell').innerHTML=location;
+                    }
+
+                    function changeColor(td, location){
+
+                            document.getElementById(location).style.backgroundColor = '#04089E';
+                    }
+
+                    function disableTableCell(location){
+
+                        document.getElementById(location).style.color = '#03056C';
+                        document.getElementById(location).removeAttribute("onclick");
+                        document.getElementById(location).style.backgroundColor = '#03056C';
+                    }
+
+                    var locationArray = new Array(25);
+                    var counter = 0;
+
+                    function checkAnswer(){
+
+                        var actualAnswer = document.getElementById('loadAnswer').innerHTML;
+                        var userAnswer = document.getElementById('userAnswer').value;
+
+                        var questionValue = document.getElementById('loadValue').innerHTML;
+                        var updated_score = document.getElementById('user_score').innerHTML;
+
+                        var location = document.getElementById('loadCurrentCell').innerHTML;
+
+                        if (locationArray.indexOf(location) > (-1)){
+
+                            window.alert("You have already answered this question. Please pick another.");
+
+                        } else {
+
+                            if (userAnswer != actualAnswer){
+
+                                user_score.innerHTML = updated_score - questionValue;
+                                window.alert("Wrong. Too bad! | " + userAnswer + " | " + actualAnswer + " | " + user_score.innerHTML + " | " + updated_score + " " + location);
+                                disableTableCell(location);
+                                locationArray[counter] = location;
+                                counter++;
+
+                            } else {
+
+                                user_score.innerHTML = ((-1) * ((updated_score * -1) - questionValue));
+                                window.alert("Correct! | " + userAnswer + " | " + actualAnswer + " | " + user_score.innerHTML + " | " + updated_score);
+                                disableTableCell(location);
+                                locationArray[counter] = location;
+                                counter++;
+                            }
+                        }
+                    }
+
+                // ]]>
+                </script>
+
+
+
+</div>
+
+</body>
+</html>

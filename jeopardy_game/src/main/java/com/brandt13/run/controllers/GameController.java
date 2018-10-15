@@ -62,4 +62,28 @@ public class GameController {
         modelAndView.setViewName("admin/doubleJeopardy");
         return modelAndView;
     }
+
+    @RequestMapping(value="/admin/finalJeopardy", method = RequestMethod.GET)
+    public ModelAndView finalJeopardy(){
+        ModelAndView modelAndView = new ModelAndView();
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User admin = userService.findUserByEmail(auth.getName());
+
+        Clue finalClue = gameService.finalJeopardy();
+
+        modelAndView.addObject("welcome", "Final Jeopardy | Welcome " + admin.getEmail() + "!");
+
+        modelAndView.addObject("finalClue", finalClue);
+        modelAndView.addObject("admin", admin);
+
+
+
+        //modelAndView.addObject("high_score", admin.getHigh_score());
+
+        modelAndView.setViewName("admin/finalJeopardy");
+        return modelAndView;
+    }
+
+
 }

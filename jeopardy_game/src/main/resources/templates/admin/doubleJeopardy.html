@@ -28,7 +28,6 @@
             <div class="panel-body">
                 <table align="center" class="t1">
 
-                    <!-- This table is the 5x5 Single Jeopardy board. -->
 
                     <style>
                         table.t1 {
@@ -146,7 +145,7 @@
 
                     <input type="button" value="Check Answer" th:onclick="|checkAnswer();|"/></button>
 
-                    <input type="button" th:action="@{/admin/finalJeopardy}" value="Go to Final Jeopardy!" method="get">
+                    <input type="button" id="save" th:action="@{/admin/finalJeopardy}" value="Go to Final Jeopardy!" method="get">
 
                 </div>
             </div>
@@ -178,16 +177,20 @@
 
     </div>
 
-    <!--
-            The following is Javascript that interacts with Thymeleaf. Currently still learning JS, HTML and CSS,
-            so it might be a bit wonky. The only way I've learned so far to connect the variables in the Java
-            model to the HTML & JS is through the form of <span> (although it might be the only way).
-
-    -->
 
     <script>
 
                 // <![CDATA[
+
+                    (function (global) {
+                        document.getElementById("user_score").innerHTML = global.localStorage.getItem("scoreSharer");
+                    }(window));
+
+                    (function (global) {
+                        document.getElementById("save").addEventListener("click", function () {
+                                     global.localStorage.setItem("scoreSharer", document.getElementById("user_score").innerHTML);
+                        }, false);
+                    }(window));
 
                     function addText(question){
 

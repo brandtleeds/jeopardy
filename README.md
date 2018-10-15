@@ -2,6 +2,13 @@
 
 In this repository are my most recent Portfolio-level Projects, hence "pProjects." The projects will be listed in chronological order with the newest projects at the top.
 
+October 2018
+
+  10/15/18
+
+  I have figured out how to use JavaScript to hold onto the user's score through the rounds of Jeopardy. Next, I will be working on
+  Final Jeopardy which will allow the user to wager up to as many points as they have, as well as working on connecting the user's
+  final score to the database.
 
 September 2018
 
@@ -27,5 +34,5 @@ A Game of Jeopardy!
 
   Nice to have:
 
-  • 2 random 'daily doubles' per round
+  • 2 random 'daily doubles' per round 
   • A high score list
