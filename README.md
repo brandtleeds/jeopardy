@@ -6,6 +6,8 @@ In this repository are my most recent Portfolio-level Projects, hence "pProjects
 
 <i>A Game of Jeopardy! 0.4 - 10/16/18</i>
 
+<b><i>Game Now Usable</i></b>
+
   The game of Jeopardy! now keeps the user's score throughout their experience, as well as pushing that score to a "Game Complete" page. Next, I will work on saving the user's score to the database and start working on a "spell check" feature. I will also work on limiting a user who has a final score in the negative to a consolation prize of $100 (if they get the Final Jeopardy question correct).
 
 <i>A Game of Jeopardy! 0.3 - 10/15/18</i>
