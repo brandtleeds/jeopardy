@@ -1,6 +1,6 @@
 # pProjects
 
-In this repository are my most recent Portfolio-level Projects, hence "pProjects." The projects will be listed in chronological order with the newest versions of projects at the top and the project's name and date in italics.
+In this repository are my most recent Portfolio-level Projects, hence "pProjects." The projects will be listed in chronological order with the newest versions of projects at the top and the project's name and commit date in italics.
 
 <b>October 2018</b>
 
