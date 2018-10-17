@@ -24,8 +24,6 @@
         <button class="btn btn-md btn-danger btn-block" name="logout" type="Submit">Logout</button>
     </form>
 
-
-
     <div class="panel-group" style="margin-top:40px">
         <div class="panel panel-success">
             <div class="panel-heading">
@@ -35,7 +33,7 @@
 
                 <div>
                     High Score: $<span id="highScore" th:text="${admin.high_score}"></span> | Final Score: $<span id="user_score" th:text="${admin.current_score}"></span>
-                     | High Score in Java: $<span th:text="${adminHS}"></span>
+                     <!--| High Score in Java: $<span th:text="${adminHS}"></span>-->
                 </div>
 
                 <form th:if="${admin.high_score} > ${adminHS}"  th:object="${newHighScore}" th:action="@{/logout}" method="put">
