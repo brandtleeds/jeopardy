@@ -6,11 +6,11 @@ In this repository are my most recent Portfolio-level Projects, hence "pProjects
 
 <i>A Game of Jeopardy! 0.4 - 10/16/18</i>
 
-  The game of Jeopardy! now keeps the user's score throughout the their experience, as well as pushing that score to a "Game Complete" page. Next, I will save the user's score to the database and start working on a "spell check" feature. I will also work on limiting a user who has a final score in the negative to a consolation prize of $100 (if they get the Final Jeopardy question correct).
+  The game of Jeopardy! now keeps the user's score throughouttheir experience, as well as pushing that score to a "Game Complete" page. Next, I will save the user's score to the database and start working on a "spell check" feature. I will also work on limiting a user who has a final score in the negative to a consolation prize of $100 (if they get the Final Jeopardy question correct).
 
 <i>A Game of Jeopardy! 0.3 - 10/15/18</i>
 
-  I have figured out how to use JavaScript to hold onto the user's score through the rounds of Jeopardy. Next, I will be working on Final Jeopardy which will allow the user to wager up to as many points as they have, as well as working on connecting the user's final score to the database.
+  I have figured out how to use JavaScript to hold onto the user's score through the rounds of Jeopardy. Next, I will be working on Final Jeopardy, which will allow the user to wager up to as many points as they have, as well as working on connecting the user's final score to the database.
 
 <b>September 2018</b>
 
