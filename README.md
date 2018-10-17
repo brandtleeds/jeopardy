@@ -20,6 +20,8 @@ In this repository are my most recent Portfolio-level Projects, hence "pProjects
 
   On my second commit of this project, I have used JavaScript along with Thymeleaf to give the table that displays the Question Board the ability to remember which cell has been clicked on, and whether or not that particular cell's question has been answered. The score is remembered for the user (which is currently known as 'admin', that is to say that every user who creates an account is also an 'admin') throughout the 25 questions. The user can then click on "Go to Double Jeopardy!" and go to a round where the scores are doubled.
 
+  Languages used: Java, Thymeleaf, SQL, HTML, CSS, JavaScript
+
 <i>Issues:</i>
 
   • Spell Check
