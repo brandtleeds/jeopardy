@@ -232,13 +232,17 @@ public class GameService {
         return userClues;
     }
 
-    public Clue finalJeopardy(){
+    public Clue[] finalJeopardy(){
 
-        Clue finalClue = new Clue();
+        Clue[] finalClue;
 
         String clueQuery = "http://jservice.io/api/random";
 
-        finalClue = restTemplate.getForObject(clueQuery, Clue.class);
+        finalClue = restTemplate.getForObject(clueQuery, Clue[].class);
+
+        String question = finalClue[0].getQuestion().toUpperCase();
+//        String replaced = question.replace("'","\\\'");
+        finalClue[0].setQuestion(question);
 
         return finalClue;
     }

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:align="http://www.w3.org/1999/xhtml"
+      xmlns:style="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <title>Final Jeopardy</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+    <form th:if="${admin.high_score} > ${adminHS}" action="#" th:object="${newHighScore}" th:action="@{/logout}" method="put">
+        <input type="hidden" th:field="*{admin.high_score}">
+        <button class="btn btn-md btn-danger btn-block" name="logout" type="Submit">Logout</button>
+    </form>
+
+    <form th:if="${admin.high_score} <= ${adminHS}" th:action="@{/logout}" method="get">
+        <button class="btn btn-md btn-danger btn-block" name="logout" type="Submit">Logout</button>
+    </form>
+
+
+
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <span th:utext="${welcome}"></span>
+            </div>
+            <div class="panel-body">
+
+                <div>
+                    High Score: $<span id="highScore" th:text="${admin.high_score}"></span> | Final Score: $<span id="user_score" th:text="${admin.current_score}"></span>
+                     | High Score in Java: $<span th:text="${adminHS}"></span>
+                </div>
+
+                <form th:if="${admin.high_score} > ${adminHS}"  th:object="${newHighScore}" th:action="@{/logout}" method="put">
+                    <input type="hidden" th:field="*{admin.high_score}">
+                    <button class="btn btn-md btn-danger btn-block" name="logout" type="Submit">Logout</button>
+                </form>
+
+                <form th:if="${admin.high_score} <= ${adminHS}" th:action="@{/admin/game}" method="get">
+                    <button name="restartGame" id="save" type="Submit">Play Again</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <div style="clear: both;"></div>
+        </br>
+    </footer>
+
+
+    <script>
+
+                // <![CDATA[
+
+                    var updated_score = document.getElementById('user_score').innerHTML;
+
+                    (function (global) {
+                        document.getElementById("user_score").innerHTML = global.localStorage.getItem("scoreSharer");
+                        document.getElementById("highScore").innerHTML = global.localStorage.getItem("highScoreSharer");
+                    }(window));
+
+                    (function (global) {
+                        document.getElementById("save").addEventListener("click", function () {
+                                     global.localStorage.setItem("scoreSharer", document.getElementById("user_score").innerHTML);
+                        }, false);
+                    }(window));
+
+
+
+                    function loadCurrentScore(current_score){
+
+                            document.getElementById('loadCurrentScore').innerHTML=current_score;
+                    }
+
+
+
+
+                // ]]>
+                </script>
+
+
+
+</div>
+
+</body>
+</html>

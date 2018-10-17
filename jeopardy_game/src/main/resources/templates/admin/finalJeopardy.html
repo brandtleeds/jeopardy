@@ -5,7 +5,7 @@
       xmlns="http://www.w3.org/1999/html">
 
 <head>
-    <title>Single Jeopardy</title>
+    <title>Final Jeopardy</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -27,8 +27,6 @@
             </div>
             <div class="panel-body">
                 <table align="center" class="t1">
-
-                    <!-- This table is the 5x5 Single Jeopardy board. -->
 
                     <style>
                         table.t1 {
@@ -61,19 +59,14 @@
                     </style>
 
                     <thead align="center">
-                    <th th:text="${finalClue.category.title}"></th>
-                    <!--<th th:text="${userClues[1][0].category.title}"></th>-->
-                    <!--<th th:text="${userClues[2][0].category.title}"></th>-->
-                    <!--<th th:text="${userClues[3][0].category.title}"></th>-->
-                    <!--<th th:text="${userClues[4][0].category.title}"></th>-->
-                    <!--<th th:text="${userClues[5][0].category.title}"></th>-->
+
+                    <th th:text="${finalClue[0].category.title}"></th>
 
                     </thead>
 
                     <tbody align="center">
-
-
                     </tbody>
+
                 </table>
 
             </div>
@@ -84,7 +77,7 @@
 
         <div class="panel panel-success" style="float: left; width: 45%">
             <div class="panel-heading">
-                High Score: $<span th:text="${admin.high_score}"> </span> | Current Score: $<span id="user_score" th:text="${admin.current_score}"></span>
+                High Score: $<span id="highScore" th:text="${admin.high_score}"></span> | Current Score: $<span id="user_score" th:text="${admin.current_score}"></span>
             </div>
 
             <div class="panel-body">
@@ -96,23 +89,26 @@
                 </style>
 
                 <div class="left-half">
-                    <p>For $<span id="loadValue"></span>...</p>
 
-                    <span id="loadAnswer" hidden></span>
-                    <!--<span id="loadCurrentCell" hidden></span>-->
+                    <span id="loadAnswer" th:text="${finalClue[0].answer}"></span>
+
+                    <p>Your wager:</p>
+
+                    <input type="number" id="userWager" name="userWager" th:placeholder="your_wager" class="form-control" />
+                    <br>
 
                     <p>Your question - Who / What / Where / When is...</p>
 
                     <input type="text" id="userAnswer" name="userAnswer" th:placeholder="your_question" class="form-control" />
                     <br>
 
-                    <input type="button" value="Check Answer" th:onclick="|checkAnswer();|"/></button>
-
                 </div>
             </div>
 
-            <form th:action="@{/admin/gameOver_thumbsUp}" method="get">
-                <button name="doubleJeopardy" id="save" type="Submit">Finish your game!</button>
+            <br>
+
+            <form th:action="@{/admin/gameComplete}" method="get">
+                <button name="completeGame" id="save" type="Submit" th:onclick="|checkAnswer();|">Finish your game!</button>
             </form>
 
         </div>
@@ -137,23 +133,17 @@
                                     padding-top: 25px;
                                 }
                 </style>
-                <td id="displayQuestion" align="center"></td>
+                <td id="displayQuestion" align="center" th:text="${finalClue[0].question}"></td>
             </table>
         </div>
 
     </div>
 
-    <footer></footer>
+    <footer>
     <div style="clear: both;"></div>
     </br>
     </footer>
 
-    <!--
-            The following is Javascript that interacts with Thymeleaf. Currently still learning JS, HTML and CSS,
-            so it might be a bit wonky. The only way I've learned so far to connect the variables in the Java
-            model to the HTML & JS is through the form of <span> (although it might be the only way).
-
-    -->
 
     <script>
 
@@ -166,6 +156,7 @@
                     (function (global) {
                         document.getElementById("save").addEventListener("click", function () {
                                      global.localStorage.setItem("scoreSharer", document.getElementById("user_score").innerHTML);
+                                     global.localStorage.setItem("highScoreSharer", document.getElementById("highScore").innerHTML);
                         }, false);
                     }(window));
 
@@ -179,69 +170,39 @@
                             document.getElementById('loadAnswer').innerHTML=answer;
                     }
 
-                    function loadValue(value){
-
-                            document.getElementById('loadValue').innerHTML=value;
-                    }
-
                     function loadCurrentScore(current_score){
 
                             document.getElementById('loadCurrentScore').innerHTML=current_score;
                     }
-
-                    function loadCurrentCell(location){
-
-                            document.getElementById('loadCurrentCell').innerHTML=location;
-                    }
-
-                    function changeColor(td, location){
-
-                            document.getElementById(location).style.backgroundColor = '#04089E';
-                    }
-
-                    function disableTableCell(location){
-
-                        document.getElementById(location).style.color = '#03056C';
-                        document.getElementById(location).removeAttribute("onclick");
-                        document.getElementById(location).style.backgroundColor = '#03056C';
-                    }
-
-                    var locationArray = new Array(25);
-                    var counter = 0;
 
                     function checkAnswer(){
 
                         var actualAnswer = document.getElementById('loadAnswer').innerHTML;
                         var userAnswer = document.getElementById('userAnswer').value;
 
-                        var questionValue = document.getElementById('loadValue').innerHTML;
+                        var user_wager = document.getElementById('userWager').value;
                         var updated_score = document.getElementById('user_score').innerHTML;
 
-                        var location = document.getElementById('loadCurrentCell').innerHTML;
+                        var current_high_score = document.getElementById('highScore').innerHTML;
 
-                        if (locationArray.indexOf(location) > (-1)){
+                        if (userAnswer != actualAnswer){
 
-                            window.alert("You have already answered this question. Please pick another.");
+                            user_score.innerHTML = updated_score - user_wager;
+                            window.alert("Wrong. Too bad! | " + userAnswer + " | " + actualAnswer + " | " + user_score.innerHTML + " | " + updated_score + " | " + user_wager + " | " + current_high_score);
 
                         } else {
 
-                            if (userAnswer != actualAnswer){
+                            user_score.innerHTML = ((-1) * ((updated_score * -1) - user_wager));
+                            window.alert("Correct! | " + userAnswer + " | " + actualAnswer + " | " + user_score.innerHTML + " | " + updated_score + " | " + user_wager + " | " + current_high_score);
 
-                                user_score.innerHTML = updated_score - questionValue;
-                                window.alert("Wrong. Too bad! | " + userAnswer + " | " + actualAnswer + " | " + user_score.innerHTML + " | " + updated_score + " " + location);
-                                disableTableCell(location);
-                                locationArray[counter] = location;
-                                counter++;
-
-                            } else {
-
-                                user_score.innerHTML = ((-1) * ((updated_score * -1) - questionValue));
-                                window.alert("Correct! | " + userAnswer + " | " + actualAnswer + " | " + user_score.innerHTML + " | " + updated_score);
-                                disableTableCell(location);
-                                locationArray[counter] = location;
-                                counter++;
-                            }
                         }
+
+                        if (user_score.innerHTML > current_high_score){
+
+                            highScore.innerHTML = user_score.innerHTML;
+
+                        }
+
                     }
 
                 // ]]>
