@@ -1,5 +1,6 @@
 package com.brandt13.run.service;
 
+import com.brandt13.run.mappers.UserMapper;
 import com.brandt13.run.model.Role;
 import com.brandt13.run.model.User;
 import com.brandt13.run.repository.RoleRepository;
@@ -20,6 +21,8 @@ public class UserServiceImplementation implements UserService {
     private RoleRepository roleRepository;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private UserMapper userMapper;
 
     @Override
     public User findUserByEmail(String email) {
@@ -34,6 +37,12 @@ public class UserServiceImplementation implements UserService {
         Role userRole = roleRepository.findByRole("ADMIN");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
+    }
+
+    public int updateUser(User user) {
+
+        int u = userMapper.updateUser(user);
+        return u;
     }
 
 

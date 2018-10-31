@@ -4,6 +4,10 @@ In this repository are my most recent Portfolio-level Projects, hence "pProjects
 
 <b>October 2018</b>
 
+<i>A Game of Jeopardy! 0.5 - 10/31/18</i>
+
+  The game now saves the user's high score to the database if it is above 0. Almost done! To do: Spell Check & Comparison | Limit user who's final score is in the negative to a consolation prize of $100
+
 <i>A Game of Jeopardy! 0.4 - 10/16/18</i>
 
 <b><i>Game Now Usable</i></b>

@@ -20,6 +20,10 @@
                 type="Submit">Logout</button>
     </form>
 
+    <!--                                    -->
+    <!--   The 5x5 Single Jeopardy Table    -->
+    <!--                                    -->
+
     <div class="panel-group" style="margin-top:40px">
         <div class="panel panel-info">
             <div class="panel-heading">
@@ -27,8 +31,6 @@
             </div>
             <div class="panel-body">
                 <table align="center" class="t1">
-
-                    <!-- This table is the 5x5 Single Jeopardy board. -->
 
                     <style>
                         table.t1 {
@@ -76,7 +78,6 @@
                             <td id="2,0" th:text="'$' + ${userClues[2][0].value}" th:onclick="|addText('${userClues[2][0].question}'); loadAnswer('${userClues[2][0].answer}'); loadValue('${userClues[2][0].value}'); loadCurrentCell('2,0'); changeColor(this, '2,0');|"></td>
                             <td id="3,0" th:text="'$' + ${userClues[3][0].value}" th:onclick="|addText('${userClues[3][0].question}'); loadAnswer('${userClues[3][0].answer}'); loadValue('${userClues[3][0].value}'); loadCurrentCell('3,0'); changeColor(this, '3,0');|"></td>
                             <td id="4,0" th:text="'$' + ${userClues[4][0].value}" th:onclick="|addText('${userClues[4][0].question}'); loadAnswer('${userClues[4][0].answer}'); loadValue('${userClues[4][0].value}'); loadCurrentCell('4,0'); changeColor(this, '4,0');|"></td>
-                            <!--<td th:text="'$' + ${userClues[5][0].value}" th:onclick="|addText('${userClues[5][0].question}');|"></td>-->
                         </tr>
                         <tr>
                             <td id="0,1" th:text="'$' + ${userClues[0][1].value}" th:onclick="|addText('${userClues[0][1].question}'); loadAnswer('${userClues[0][1].answer}'); loadValue('${userClues[0][1].value}'); loadCurrentCell('0,1'); changeColor(this, '0,1');|"></td>
@@ -84,7 +85,6 @@
                             <td id="2,1" th:text="'$' + ${userClues[2][1].value}" th:onclick="|addText('${userClues[2][1].question}'); loadAnswer('${userClues[2][1].answer}'); loadValue('${userClues[2][1].value}'); loadCurrentCell('2,1'); changeColor(this, '2,1');|"></td>
                             <td id="3,1" th:text="'$' + ${userClues[3][1].value}" th:onclick="|addText('${userClues[3][1].question}'); loadAnswer('${userClues[3][1].answer}'); loadValue('${userClues[3][1].value}'); loadCurrentCell('3,1'); changeColor(this, '3,1');|"></td>
                             <td id="4,1" th:text="'$' + ${userClues[4][1].value}" th:onclick="|addText('${userClues[4][1].question}'); loadAnswer('${userClues[4][1].answer}'); loadValue('${userClues[4][1].value}'); loadCurrentCell('4,1'); changeColor(this, '4,1');|"></td>
-                            <!--<td th:text="'$' + ${userClues[5][1].value}" th:onclick="'addText(\'' + ${userClues[5][1].question} + '\');'"></td>-->
                         </tr>
                         <tr>
                             <td id="0,2" th:text="'$' + ${userClues[0][2].value}" th:onclick="|addText('${userClues[0][2].question}'); loadAnswer('${userClues[0][2].answer}'); loadValue('${userClues[0][2].value}'); loadCurrentCell('0,2'); changeColor(this, '0,2');|"></td>
@@ -92,7 +92,6 @@
                             <td id="2,2" th:text="'$' + ${userClues[2][2].value}" th:onclick="|addText('${userClues[2][2].question}'); loadAnswer('${userClues[2][2].answer}'); loadValue('${userClues[2][2].value}'); loadCurrentCell('2,2'); changeColor(this, '2,2');|"></td>
                             <td id="3,2" th:text="'$' + ${userClues[3][2].value}" th:onclick="|addText('${userClues[3][2].question}'); loadAnswer('${userClues[3][2].answer}'); loadValue('${userClues[3][2].value}'); loadCurrentCell('3,2'); changeColor(this, '3,2');|"></td>
                             <td id="4,2" th:text="'$' + ${userClues[4][2].value}" th:onclick="|addText('${userClues[4][2].question}'); loadAnswer('${userClues[4][2].answer}'); loadValue('${userClues[4][2].value}'); loadCurrentCell('4,2'); changeColor(this, '4,2');|"></td>
-                            <!--<td th:text="'$' + ${userClues[5][2].value}" th:onclick="'addText(\'' + ${userClues[5][2].question} + '\');'"></td>-->
                         </tr>
                         <tr>
                             <td id="0,3" th:text="'$' + ${userClues[0][3].value}" th:onclick="|addText('${userClues[0][3].question}'); loadAnswer('${userClues[0][3].answer}'); loadValue('${userClues[0][3].value}'); loadCurrentCell('0,3'); changeColor(this, '0,3');|"></td>
@@ -100,7 +99,6 @@
                             <td id="2,3" th:text="'$' + ${userClues[2][3].value}" th:onclick="|addText('${userClues[2][3].question}'); loadAnswer('${userClues[2][3].answer}'); loadValue('${userClues[2][3].value}'); loadCurrentCell('2,3'); changeColor(this, '2,3');|"></td>
                             <td id="3,3" th:text="'$' + ${userClues[3][3].value}" th:onclick="|addText('${userClues[3][3].question}'); loadAnswer('${userClues[3][3].answer}'); loadValue('${userClues[3][3].value}'); loadCurrentCell('3,3'); changeColor(this, '3,3');|"></td>
                             <td id="4,3" th:text="'$' + ${userClues[4][3].value}" th:onclick="|addText('${userClues[4][3].question}'); loadAnswer('${userClues[4][3].answer}'); loadValue('${userClues[4][3].value}'); loadCurrentCell('4,3'); changeColor(this, '4,3');|"></td>
-                            <!--<td th:text="'$' + ${userClues[5][3].value}" th:onclick="'addText(\'' + ${userClues[5][3].question} + '\');'"></td>-->
                         </tr>
                         <tr>
                             <td id="0,4" th:text="'$' + ${userClues[0][4].value}" th:onclick="|addText('${userClues[0][4].question}'); loadAnswer('${userClues[0][4].answer}'); loadValue('${userClues[0][4].value}'); loadCurrentCell('0,4'); changeColor(this, '0,4');|"></td>
@@ -108,7 +106,6 @@
                             <td id="2,4" th:text="'$' + ${userClues[2][4].value}" th:onclick="|addText('${userClues[2][4].question}'); loadAnswer('${userClues[2][4].answer}'); loadValue('${userClues[2][4].value}'); loadCurrentCell('2,4'); changeColor(this, '2,4');|"></td>
                             <td id="3,4" th:text="'$' + ${userClues[3][4].value}" th:onclick="|addText('${userClues[3][4].question}'); loadAnswer('${userClues[3][4].answer}'); loadValue('${userClues[3][4].value}'); loadCurrentCell('3,4'); changeColor(this, '3,4');|"></td>
                             <td id="4,4" th:text="'$' + ${userClues[4][4].value}" th:onclick="|addText('${userClues[4][4].question}'); loadAnswer('${userClues[4][4].answer}'); loadValue('${userClues[4][4].value}'); loadCurrentCell('4,4'); changeColor(this, '4,4');|"></td>
-                            <!--<td th:text="'$' + ${userClues[5][4].value}" th:onclick="'addText(\'' + ${userClues[5][4].question} + '\');'"></td>-->
                         </tr>
 
                     </tbody>
@@ -119,6 +116,10 @@
     </div>
 
     <div class="panel-group" style="margin-top:20px">
+
+        <!--                                                                   -->
+        <!--   User high score, current score, question value and user input   -->
+        <!--                                                                   -->
 
         <div class="panel panel-success" style="float: left; width: 45%">
             <div class="panel-heading">
@@ -155,6 +156,10 @@
 
         </div>
 
+        <!--                                                                        -->
+        <!--   The Question Display, Jeopardy style (what Alex Trebek would read)   -->
+        <!--                                                                        -->
+
         <div class="right-half">
             <table class="t2">
                 <style>
@@ -186,142 +191,105 @@
         </br>
     </footer>
 
-    <!--
-            The following is Javascript that interacts with Thymeleaf. Currently still learning JS, HTML and CSS,
-            so it might be a bit wonky. The only way I've learned so far to connect the variables in the Java
-            model to the HTML & JS is through the form of <span> (although it might be the only way).
+    <!--                                                                    -->
+    <!--   JavaScript to animate the table, load the questions, answers &   -->
+    <!--   their point values and keep the user's score.                    -->
+    <!--                                                                    -->
 
-    -->
+    <script>
 
-                <script>
+        // <![CDATA[
 
-                // <![CDATA[
+            (function (global) {
+                document.getElementById("save").addEventListener("click", function () {
+                             global.localStorage.setItem("scoreSharer", document.getElementById("user_score").innerHTML);
+                }, false);
+            }(window));
 
-                    (function (global) {
-                        document.getElementById("save").addEventListener("click", function () {
-                                     global.localStorage.setItem("scoreSharer", document.getElementById("user_score").innerHTML);
-                        }, false);
-                    }(window));
 
-                    function addText(question){
+            function addText(question){
 
-                            document.getElementById('displayQuestion').innerHTML=question;
+                    document.getElementById('displayQuestion').innerHTML=question;
+            }
+
+            function loadAnswer(answer){
+
+                    document.getElementById('loadAnswer').innerHTML=answer;
+            }
+
+            function loadValue(value){
+
+                    document.getElementById('loadValue').innerHTML=value;
+            }
+
+            function loadCurrentCell(location){
+
+                    document.getElementById('loadCurrentCell').innerHTML=location;
+            }
+
+            function changeColor(td, location){
+
+                    document.getElementById(location).style.backgroundColor = '#04089E';
+            }
+
+            function disableTableCell(location){
+
+                document.getElementById(location).style.color = '#03056C';
+                document.getElementById(location).removeAttribute("onclick");
+                document.getElementById(location).style.backgroundColor = '#03056C';
+            }
+
+
+            var locationArray = new Array(25);
+            var counter = 0;
+
+            function checkAnswer(){
+
+                var actualAnswer = document.getElementById('loadAnswer').innerHTML;
+                var userAnswer = document.getElementById('userAnswer').value;
+
+                var questionValue = document.getElementById('loadValue').innerHTML;
+                var updated_score = document.getElementById('user_score').innerHTML;
+
+                var location = document.getElementById('loadCurrentCell').innerHTML;
+
+                if (locationArray.indexOf(location) > (-1)){
+
+                    window.alert("You have already answered this question. Please pick another.");
+
+                } else {
+
+                    if (userAnswer != actualAnswer){
+
+                        user_score.innerHTML = updated_score - questionValue;
+                        window.alert("Wrong. Too bad! | " + userAnswer + " | " + actualAnswer + " | " + user_score.innerHTML + " | " + updated_score);
+                        disableTableCell(location);
+                        locationArray[counter] = location;
+                        counter++;
+
+                    } else {
+
+                        user_score.innerHTML = ((-1) * ((updated_score * -1) - questionValue));
+                        window.alert("Correct! | " + userAnswer + " | " + actualAnswer + " | " + user_score.innerHTML + " | " + updated_score);
+                        disableTableCell(location);
+                        locationArray[counter] = location;
+                        counter++;
                     }
+                }
+            }
 
-                    function loadAnswer(answer){
+        // ]]>
+    </script>
 
-                            document.getElementById('loadAnswer').innerHTML=answer;
-                    }
-
-                    function loadValue(value){
-
-                            document.getElementById('loadValue').innerHTML=value;
-                    }
-
-                    function loadCurrentScore(current_score){
-
-                            document.getElementById('loadCurrentScore').innerHTML=current_score;
-                    }
-
-                    function loadCurrentCell(location){
-
-                            document.getElementById('loadCurrentCell').innerHTML=location;
-                    }
-
-                    function changeColor(td, location){
-
-                            document.getElementById(location).style.backgroundColor = '#04089E';
-                    }
-
-                    function disableTableCell(location){
-
-                        document.getElementById(location).style.color = '#03056C';
-                        document.getElementById(location).removeAttribute("onclick");
-                        document.getElementById(location).style.backgroundColor = '#03056C';
-                    }
-
-                    var locationArray = new Array(25);
-                    var counter = 0;
-
-                    function checkAnswer(){
-
-                        var actualAnswer = document.getElementById('loadAnswer').innerHTML;
-                        var userAnswer = document.getElementById('userAnswer').value;
-
-                        var questionValue = document.getElementById('loadValue').innerHTML;
-                        var updated_score = document.getElementById('user_score').innerHTML;
-
-                        var location = document.getElementById('loadCurrentCell').innerHTML;
-
-                        if (locationArray.indexOf(location) > (-1)){
-
-                            window.alert("You have already answered this question. Please pick another.");
-
-                        } else {
-
-                            if (userAnswer != actualAnswer){
-
-                                user_score.innerHTML = updated_score - questionValue;
-                                window.alert("Wrong. Too bad! | " + userAnswer + " | " + actualAnswer + " | " + user_score.innerHTML + " | " + updated_score);
-                                disableTableCell(location);
-                                locationArray[counter] = location;
-                                counter++;
-
-                            } else {
-
-                                user_score.innerHTML = ((-1) * ((updated_score * -1) - questionValue));
-                                window.alert("Correct! | " + userAnswer + " | " + actualAnswer + " | " + user_score.innerHTML + " | " + updated_score);
-                                disableTableCell(location);
-                                locationArray[counter] = location;
-                                counter++;
-                            }
-                        }
-                    }
-
-                // ]]>
-                </script>
+    <!--                                                          -->
+    <!--   Commented out question data for development purposes   -->
+    <!--                                                          -->
 
     <!--<p th:text="${userClues[0][0].category.id} + ' | ' + ${userClues[0][0].category.title} + ' | ' + ${userClues[0][0].question} + ' | ' + ${userClues[0][0].answer} "></p>-->
     <!--<p th:text="${userClues[0][1].category.id} + ' | ' + ${userClues[0][1].category.title} + ' | ' + ${userClues[0][1].question} + ' | ' + ${userClues[0][1].answer} "></p>-->
     <!--<p th:text="${userClues[0][2].category.id} + ' | ' + ${userClues[0][2].category.title} + ' | ' + ${userClues[0][2].question} + ' | ' + ${userClues[0][2].answer} "></p>-->
     <!--<p th:text="${userClues[0][3].category.id} + ' | ' + ${userClues[0][3].category.title} + ' | ' + ${userClues[0][3].question} + ' | ' + ${userClues[0][3].answer} "></p>-->
     <!--<p th:text="${userClues[0][4].category.id} + ' | ' + ${userClues[0][4].category.title} + ' | ' + ${userClues[0][4].question} + ' | ' + ${userClues[0][4].answer} "></p>-->
-    <!--&lt;!&ndash;<p th:text="${userClues[0][5].category.id} + ' | ' + ${userClues[0][5].category.title} + ' | ' + ${userClues[0][5].question} + ' | ' + ${userClues[0][5].answer} "></p>&ndash;&gt;-->
-    <!--<br>-->
-    <!--<p th:text="${userClues[1][0].category.id} + ' | ' + ${userClues[1][0].category.title} + ' | ' + ${userClues[1][0].question} + ' | ' + ${userClues[1][0].answer} "></p>-->
-    <!--<p th:text="${userClues[1][1].category.id} + ' | ' + ${userClues[1][1].category.title} + ' | ' + ${userClues[1][1].question} + ' | ' + ${userClues[1][1].answer} "></p>-->
-    <!--<p th:text="${userClues[1][2].category.id} + ' | ' + ${userClues[1][2].category.title} + ' | ' + ${userClues[1][2].question} + ' | ' + ${userClues[1][2].answer} "></p>-->
-    <!--<p th:text="${userClues[1][3].category.id} + ' | ' + ${userClues[1][3].category.title} + ' | ' + ${userClues[1][3].question} + ' | ' + ${userClues[1][3].answer} "></p>-->
-    <!--<p th:text="${userClues[1][4].category.id} + ' | ' + ${userClues[1][4].category.title} + ' | ' + ${userClues[1][4].question} + ' | ' + ${userClues[1][4].answer} "></p>-->
-    <!--&lt;!&ndash;<p th:text="${userClues[1][5].category.id} + ' | ' + ${userClues[1][5].category.title} + ' | ' + ${userClues[1][5].question} + ' | ' + ${userClues[1][5].answer} "></p>&ndash;&gt;-->
-    <!--<br>-->
-    <!--<p th:text="${userClues[2][0].category.id} + ' | ' + ${userClues[2][0].category.title} + ' | ' + ${userClues[2][0].question} + ' | ' + ${userClues[2][0].answer} "></p>-->
-    <!--<p th:text="${userClues[2][1].category.id} + ' | ' + ${userClues[2][1].category.title} + ' | ' + ${userClues[2][1].question} + ' | ' + ${userClues[2][1].answer} "></p>-->
-    <!--<p th:text="${userClues[2][2].category.id} + ' | ' + ${userClues[2][2].category.title} + ' | ' + ${userClues[2][2].question} + ' | ' + ${userClues[2][2].answer} "></p>-->
-    <!--<p th:text="${userClues[2][3].category.id} + ' | ' + ${userClues[2][3].category.title} + ' | ' + ${userClues[2][3].question} + ' | ' + ${userClues[2][3].answer} "></p>-->
-    <!--<p th:text="${userClues[2][4].category.id} + ' | ' + ${userClues[2][4].category.title} + ' | ' + ${userClues[2][4].question} + ' | ' + ${userClues[2][4].answer} "></p>-->
-    <!--&lt;!&ndash;<p th:text="${userClues[2][5].category.id} + ' | ' + ${userClues[2][5].category.title} + ' | ' + ${userClues[2][5].question} + ' | ' + ${userClues[2][5].answer} "></p>&ndash;&gt;-->
-    <!--<br>-->
-    <!--<p th:text="${userClues[3][0].category.id} + ' | ' + ${userClues[3][0].category.title} + ' | ' + ${userClues[3][0].question} + ' | ' + ${userClues[3][0].answer} "></p>-->
-    <!--<p th:text="${userClues[3][1].category.id} + ' | ' + ${userClues[3][1].category.title} + ' | ' + ${userClues[3][1].question} + ' | ' + ${userClues[3][1].answer} "></p>-->
-    <!--<p th:text="${userClues[3][2].category.id} + ' | ' + ${userClues[3][2].category.title} + ' | ' + ${userClues[3][2].question} + ' | ' + ${userClues[3][2].answer} "></p>-->
-    <!--<p th:text="${userClues[3][3].category.id} + ' | ' + ${userClues[3][3].category.title} + ' | ' + ${userClues[3][3].question} + ' | ' + ${userClues[3][3].answer} "></p>-->
-    <!--<p th:text="${userClues[3][4].category.id} + ' | ' + ${userClues[3][4].category.title} + ' | ' + ${userClues[3][4].question} + ' | ' + ${userClues[3][4].answer} "></p>-->
-    <!--&lt;!&ndash;<p th:text="${userClues[3][5].category.id} + ' | ' + ${userClues[3][5].category.title} + ' | ' + ${userClues[3][5].question} + ' | ' + ${userClues[3][5].answer} "></p>&ndash;&gt;-->
-    <!--<br>-->
-    <!--<p th:text="${userClues[4][0].category.id} + ' | ' + ${userClues[4][0].category.title} + ' | ' + ${userClues[4][0].question} + ' | ' + ${userClues[4][0].answer} "></p>-->
-    <!--<p th:text="${userClues[4][1].category.id} + ' | ' + ${userClues[4][1].category.title} + ' | ' + ${userClues[4][1].question} + ' | ' + ${userClues[4][1].answer} "></p>-->
-    <!--<p th:text="${userClues[4][2].category.id} + ' | ' + ${userClues[4][2].category.title} + ' | ' + ${userClues[4][2].question} + ' | ' + ${userClues[4][2].answer} "></p>-->
-    <!--<p th:text="${userClues[4][3].category.id} + ' | ' + ${userClues[4][3].category.title} + ' | ' + ${userClues[4][3].question} + ' | ' + ${userClues[4][3].answer} "></p>-->
-    <!--<p th:text="${userClues[4][4].category.id} + ' | ' + ${userClues[4][4].category.title} + ' | ' + ${userClues[4][4].question} + ' | ' + ${userClues[4][4].answer} "></p>-->
-    <!--&lt;!&ndash;<p th:text="${userClues[4][5].category.id} + ' | ' + ${userClues[4][5].category.title} + ' | ' + ${userClues[4][5].question} + ' | ' + ${userClues[4][5].answer} "></p>&ndash;&gt;-->
-    <!--<br>-->
-    <!--&lt;!&ndash;<p th:text="${userClues[5][0].category.id} + ' | ' + ${userClues[5][0].category.title} + ' | ' + ${userClues[5][0].question} + ' | ' + ${userClues[5][0].answer} "></p>&ndash;&gt;-->
-    <!--&lt;!&ndash;<p th:text="${userClues[5][1].category.id} + ' | ' + ${userClues[5][1].category.title} + ' | ' + ${userClues[5][1].question} + ' | ' + ${userClues[5][1].answer} "></p>&ndash;&gt;-->
-    <!--&lt;!&ndash;<p th:text="${userClues[5][2].category.id} + ' | ' + ${userClues[5][2].category.title} + ' | ' + ${userClues[5][2].question} + ' | ' + ${userClues[5][2].answer} "></p>&ndash;&gt;-->
-    <!--&lt;!&ndash;<p th:text="${userClues[5][3].category.id} + ' | ' + ${userClues[5][3].category.title} + ' | ' + ${userClues[5][3].question} + ' | ' + ${userClues[5][3].answer} "></p>&ndash;&gt;-->
-    <!--&lt;!&ndash;<p th:text="${userClues[5][4].category.id} + ' | ' + ${userClues[5][4].category.title} + ' | ' + ${userClues[5][4].question} + ' | ' + ${userClues[5][4].answer} "></p>&ndash;&gt;-->
-    <!--&lt;!&ndash;<p th:text="${userClues[5][5].category.id} + ' | ' + ${userClues[5][5].category.title} + ' | ' + ${userClues[5][5].question} + ' | ' + ${userClues[5][5].answer} "></p&ndash;&gt;-->
 
 
 </div>

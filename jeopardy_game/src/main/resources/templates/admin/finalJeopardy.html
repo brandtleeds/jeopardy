@@ -16,9 +16,12 @@
 <div class="container">
 
     <form th:action="@{/logout}" method="get">
-        <button class="btn btn-md btn-danger btn-block" name="logout"
-                type="Submit">Logout</button>
+        <button class="btn btn-md btn-danger btn-block" name="logout" type="Submit">Logout</button>
     </form>
+
+    <!--                                 -->
+    <!--   The Final Jeopardy Category   -->
+    <!--                                 -->
 
     <div class="panel-group" style="margin-top:40px">
         <div class="panel panel-info">
@@ -75,9 +78,13 @@
 
     <div class="panel-group" style="margin-top:20px">
 
+        <!--                                                                   -->
+        <!--   User high score, current score, user's wager and answer input   -->
+        <!--                                                                   -->
+
         <div class="panel panel-success" style="float: left; width: 45%">
             <div class="panel-heading">
-                High Score: $<span id="highScore" th:text="${admin.high_score}"></span> | Current Score: $<span id="user_score" th:text="${admin.current_score}"></span>
+                High Score: $<span id="currentHighScore" th:text="${admin.high_score}"></span> | Current Score: $<span id="user_score" th:text="${admin.current_score}"></span>
             </div>
 
             <div class="panel-body">
@@ -107,33 +114,41 @@
 
             <br>
 
-            <form th:action="@{/admin/gameComplete}" method="get">
-                <button name="completeGame" id="save" type="Submit" th:onclick="|checkAnswer();|">Finish your game!</button>
+            <form th:action="@{/admin/gameComplete}" th:object="${newHighScore}" method="post">
+                <input id="highScore" th:field="*{newHigh}" th:attr="value = ${admin.high_score}" hidden>
+                <button id="save" type="Submit" th:onclick="|checkAnswer();|">Finish your game!</button>
             </form>
 
         </div>
 
+        <!--                                                                        -->
+        <!--   The Question Display, Jeopardy style (what Alex Trebek would read)   -->
+        <!--                                                                        -->
+
         <div class="right-half">
             <table class="t2">
+
                 <style>
-                                table.t2 {
-                                    float: right;
-                                    width: 52%;
-                                    min-height: 380px;
-                                }
-                                table.t2 td {
-                                    background-color: #060ce9;
-                                    font-family: Palatino, URW Palladio L, serif;
-                                    color: white;
-                                    font-size: 26px;
-                                    font-weight: 500;
-                                    padding-right: 90px;
-                                    padding-left: 90px;
-                                    padding-top: 25px;
-                                    padding-top: 25px;
-                                }
+                    table.t2 {
+                        float: right;
+                        width: 52%;
+                        min-height: 380px;
+                    }
+                    table.t2 td {
+                        background-color: #060ce9;
+                        font-family: Palatino, URW Palladio L, serif;
+                        color: white;
+                        font-size: 26px;
+                        font-weight: 500;
+                        padding-right: 90px;
+                        padding-left: 90px;
+                        padding-top: 25px;
+                        padding-top: 25px;
+                    }
                 </style>
+
                 <td id="displayQuestion" align="center" th:text="${finalClue[0].question}"></td>
+
             </table>
         </div>
 
@@ -144,70 +159,82 @@
     </br>
     </footer>
 
+    <!--                                                                      -->
+    <!--   JavaScript to load the final question and tally the user's wager   -->
+    <!--   on that question.                                                  -->
+    <!--                                                                      -->
+
 
     <script>
 
-                // <![CDATA[
+        // <![CDATA[
 
-                    (function (global) {
-                        document.getElementById("user_score").innerHTML = global.localStorage.getItem("scoreSharer");
-                    }(window));
 
-                    (function (global) {
-                        document.getElementById("save").addEventListener("click", function () {
-                                     global.localStorage.setItem("scoreSharer", document.getElementById("user_score").innerHTML);
-                                     global.localStorage.setItem("highScoreSharer", document.getElementById("highScore").innerHTML);
-                        }, false);
-                    }(window));
+            (function (global) {
+                document.getElementById("user_score").innerHTML = global.localStorage.getItem("scoreSharer");
+            }(window));
 
-                    function addText(question){
+            (function (global) {
+                document.getElementById("save").addEventListener("click", function () {
+                             global.localStorage.setItem("scoreSharer", document.getElementById("user_score").innerHTML);
+                }, false);
+            }(window));
 
-                            document.getElementById('displayQuestion').innerHTML=question;
-                    }
 
-                    function loadAnswer(answer){
+            function addText(question){
 
-                            document.getElementById('loadAnswer').innerHTML=answer;
-                    }
+                    document.getElementById('displayQuestion').innerHTML = question;
+            }
 
-                    function loadCurrentScore(current_score){
+            function loadAnswer(answer){
 
-                            document.getElementById('loadCurrentScore').innerHTML=current_score;
-                    }
+                    document.getElementById('loadAnswer').innerHTML = answer;
+            }
 
-                    function checkAnswer(){
+            function checkAnswer(){
 
-                        var actualAnswer = document.getElementById('loadAnswer').innerHTML;
-                        var userAnswer = document.getElementById('userAnswer').value;
+                var actualAnswer = document.getElementById('loadAnswer').innerHTML;
+                var userAnswer = document.getElementById('userAnswer').value;
 
-                        var user_wager = document.getElementById('userWager').value;
-                        var updated_score = document.getElementById('user_score').innerHTML;
+                var user_wager = document.getElementById('userWager').value;
+                var updated_score = document.getElementById('user_score').innerHTML;
 
-                        var current_high_score = document.getElementById('highScore').innerHTML;
+                var current_high_score = document.getElementById('currentHighScore').innerHTML;
 
-                        if (userAnswer != actualAnswer){
 
-                            user_score.innerHTML = updated_score - user_wager;
-                            window.alert("Wrong. Too bad! | " + userAnswer + " | " + actualAnswer + " | " + user_score.innerHTML + " | " + updated_score + " | " + user_wager + " | " + current_high_score);
+                if (userAnswer != actualAnswer){
 
-                        } else {
+                    user_score.innerHTML = updated_score - user_wager;
+                    window.alert("Wrong. Too bad! You lose $" + user_wager + " | Your Answer: " + userAnswer + " | Correct Answer: " + actualAnswer);
 
-                            user_score.innerHTML = ((-1) * ((updated_score * -1) - user_wager));
-                            window.alert("Correct! | " + userAnswer + " | " + actualAnswer + " | " + user_score.innerHTML + " | " + updated_score + " | " + user_wager + " | " + current_high_score);
+                } else {
 
-                        }
+                    user_score.innerHTML = ((-1) * ((updated_score * -1) - user_wager));
+                    window.alert("Correct! You get $" + user_wager);
+                }
 
-                        if (user_score.innerHTML > current_high_score){
 
-                            highScore.innerHTML = user_score.innerHTML;
+                var checkNewHigh = user_score.innerHTML;
 
-                        }
+                if (current_high_score < checkNewHigh) {
 
-                    }
+                    document.getElementById('highScore').value = user_score.innerHTML;
 
-                // ]]>
-                </script>
+                } else if (current_high_score >= checkNewHigh) {
 
+                    document.getElementById('highScore').value = currentHighScore.innerHTML;
+                }
+            }
+
+
+        // ]]>
+    </script>
+
+    <!--                                                          -->
+    <!--   Commented out question data for development purposes   -->
+    <!--                                                          -->
+
+    <!--<p th:text="${finalClue[0].category.id} + ' | ' + ${finalClue[0].category.title} + ' | ' + ${finalClue[0].question} + ' | ' + ${finalClue[0].answer} "></p>-->
 
 
 </div>

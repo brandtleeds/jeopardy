@@ -13,6 +13,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
+
+//  This is the GameService. It calls the jService API and finds categories of clues,
+//  saving them to a 25-question, 5x5 array. These are then displayed to the user in
+//  the view.
+
+
 @Service("gameService")
 public class GameService {
 
@@ -25,9 +31,6 @@ public class GameService {
     User user;
 
     public Clue[][] singleJeopardy(){
-
-        //  This method loads a random 5x5 Single Jeopardy board. The questions are from $100
-        //  to $500. The api doc can be found at http://jservice.io
 
         Clue[][] userClues = new Clue[5][5];
 
@@ -129,9 +132,6 @@ public class GameService {
     }
 
     public Clue[][] doubleJeopardy(){
-
-        //  This method loads a random 5x5 Double Jeopardy board. The questions are from $200
-        //  to $1000. The api doc can be found at http://jservice.io
 
         Clue[][] userClues = new Clue[5][5];
 

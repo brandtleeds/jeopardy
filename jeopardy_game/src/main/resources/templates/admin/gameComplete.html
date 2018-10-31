@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org" xmlns:align="http://www.w3.org/1999/xhtml"
       xmlns:style="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html"
-      xmlns="http://www.w3.org/1999/html">
+      xmlns="http://www.w3.org/1999/html" xmlns:ACTION="http://www.w3.org/1999/xhtml">
 
 <head>
     <title>Final Jeopardy</title>
@@ -15,14 +15,14 @@
 <body>
 <div class="container">
 
-    <form th:if="${admin.high_score} > ${adminHS}" action="#" th:object="${newHighScore}" th:action="@{/logout}" method="put">
-        <input type="hidden" th:field="*{admin.high_score}">
+
+    <form th:action="@{/logout}" method="get">
         <button class="btn btn-md btn-danger btn-block" name="logout" type="Submit">Logout</button>
     </form>
 
-    <form th:if="${admin.high_score} <= ${adminHS}" th:action="@{/logout}" method="get">
-        <button class="btn btn-md btn-danger btn-block" name="logout" type="Submit">Logout</button>
-    </form>
+    <!--                                                      -->
+    <!--   Display of the user's final score and high score   -->
+    <!--                                                      -->
 
     <div class="panel-group" style="margin-top:40px">
         <div class="panel panel-success">
@@ -32,18 +32,13 @@
             <div class="panel-body">
 
                 <div>
-                    High Score: $<span id="highScore" th:text="${admin.high_score}"></span> | Final Score: $<span id="user_score" th:text="${admin.current_score}"></span>
-                     <!--| High Score in Java: $<span th:text="${adminHS}"></span>-->
+                    High Score: $<span th:text="${admin.high_score}"></span> | Final Score: $<span id="user_score" th:text="${admin.current_score}"></span>
                 </div>
 
-                <form th:if="${admin.high_score} > ${adminHS}"  th:object="${newHighScore}" th:action="@{/logout}" method="put">
-                    <input type="hidden" th:field="*{admin.high_score}">
-                    <button class="btn btn-md btn-danger btn-block" name="logout" type="Submit">Logout</button>
+                <form th:action="@{/admin/game}" method="get">
+                    <button type="Submit">Play Again</button>
                 </form>
 
-                <form th:if="${admin.high_score} <= ${adminHS}" th:action="@{/admin/game}" method="get">
-                    <button name="restartGame" id="save" type="Submit">Play Again</button>
-                </form>
 
             </div>
         </div>
@@ -55,37 +50,27 @@
         </br>
     </footer>
 
+    <!--                                                  -->
+    <!--   JavaScript to display the user's final score   -->
+    <!--                                                  -->
+
 
     <script>
 
-                // <![CDATA[
+        // <![CDATA[
 
-                    var updated_score = document.getElementById('user_score').innerHTML;
+            (function (global) {
+                document.getElementById("user_score").innerHTML = global.localStorage.getItem("scoreSharer");
+            }(window));
 
-                    (function (global) {
-                        document.getElementById("user_score").innerHTML = global.localStorage.getItem("scoreSharer");
-                        document.getElementById("highScore").innerHTML = global.localStorage.getItem("highScoreSharer");
-                    }(window));
+            (function (global) {
+                document.getElementById("save").addEventListener("click", function () {
+                             global.localStorage.setItem("scoreSharer", document.getElementById("user_score").innerHTML);
+                }, false);
+            }(window));
 
-                    (function (global) {
-                        document.getElementById("save").addEventListener("click", function () {
-                                     global.localStorage.setItem("scoreSharer", document.getElementById("user_score").innerHTML);
-                        }, false);
-                    }(window));
-
-
-
-                    function loadCurrentScore(current_score){
-
-                            document.getElementById('loadCurrentScore').innerHTML=current_score;
-                    }
-
-
-
-
-                // ]]>
-                </script>
-
+        // ]]>
+    </script>
 
 
 </div>

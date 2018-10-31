@@ -1,19 +1,16 @@
 package com.brandt13.run.mappers;
 
+import com.brandt13.run.model.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface UserMapper {
 
-//        String CREATE_USER = "INSERT INTO `jeopardyGame`.`user` (`email`,`password`,`current_score`, `high_score`) " +
-//                "VALUES (#{email}, #{password}, #{current_score}, #{high_score});";
-//
-//        String UPDATE_HIGH_SCORE = '';
+        String UPDATE_USER = "UPDATE `jeopardyGame`.`user` SET high_score = #{high_score} WHERE user_id = #{user_id}";
 
-//        @Create(CREATE_USER)
-//        User createUser(User user);
-
-
+        @Update(UPDATE_USER)
+        public int updateUser (User user);
 
 }
