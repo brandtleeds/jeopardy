@@ -2,6 +2,19 @@
 
 In this repository are my most recent Portfolio-level Projects, hence "pProjects." The projects will be listed in chronological order with the newest versions of projects at the top and the project's name and commit date in italics.
 
+<b>October 2019</b>
+
+<i>A Game of Jeopardy! 0.6 - 10/23/19</i>
+
+  I have added a spell check, the Jaro-Winkler distance string metric, which measures an "edit distance" between two strings. The distance comes out as a percentage, 0% meaning two strings are far apart, 100% meaning they are the exact same. I have set the level of "Correctness" to 70%, meaning if someone gets an answer correct but misspells a letter or three, the game counts the user's answer as correct.
+  
+  To do: 
+    
+  • Remove article adjectives from the spell check and a user's answer for a more accurate comparison. Many answers from jService contain article adjectives and many do not when they seem like they should be there. This can also happen from the user's end, adding article adjectives when the game doesn't have them, resulting in a Jaro-Winkler distance under 70%, even if the user got an answer correct.
+      - As a side note, some of the answers from jService have "italic tags" around book and movie titles, which also need to be removed.
+    
+  • Limit user who's final score is in the negative to a consolation prize of $100
+
 <b>October 2018</b>
 
 <i>A Game of Jeopardy! 0.5 - 10/31/18</i>
