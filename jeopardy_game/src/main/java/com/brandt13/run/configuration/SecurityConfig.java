@@ -51,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
                         .authenticated().and().csrf().disable().formLogin()
                         .loginPage("/login").failureUrl("/login?error=true")
-                        .defaultSuccessUrl("/admin/game")
+                        .defaultSuccessUrl("/admin/game", true)
                         .usernameParameter("email")
                         .passwordParameter("password")
                         .and().logout()
@@ -64,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         public void configure(WebSecurity web) throws Exception {
                 web
                         .ignoring()
-                        .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+                        .antMatchers("/resources/**", "/static/**", "/images/**");
         }
 
 

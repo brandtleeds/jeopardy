@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" xmlns:align="http://www.w3.org/1999/xhtml"
-      xmlns:style="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html"
-      xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>Single Jeopardy</title>
@@ -20,9 +17,9 @@
                 type="Submit">Logout</button>
     </form>
 
-    <!--                                    -->
-    <!--   The 5x5 Single Jeopardy Table    -->
-    <!--                                    -->
+    <!------------------------------------------------------------------------------\/---->
+    <!--   The 5x5 Single Jeopardy Table    ----------------------------------------\/---->
+    <!------------------------------------------------------------------------------\/---->
 
     <div class="panel-group" style="margin-top:40px">
         <div class="panel panel-info">
@@ -68,44 +65,72 @@
                             <th th:text="${userClues[2][0].category.title}"></th>
                             <th th:text="${userClues[3][0].category.title}"></th>
                             <th th:text="${userClues[4][0].category.title}"></th>
-                            <!--<th th:text="${userClues[5][0].category.title}"></th>-->
 
                     </thead>
                     <tbody align="center">
                         <tr>
-                            <td id="0,0" th:text="'$' + ${userClues[0][0].value}" th:onclick="|addText('${userClues[0][0].question}'); loadAnswer('${userClues[0][0].answer}'); loadValue('${userClues[0][0].value}'); loadCurrentCell('0,0'); changeColor(this, '0,0');|"></td>
-                            <td id="1,0" th:text="'$' + ${userClues[1][0].value}" th:onclick="|addText('${userClues[1][0].question}'); loadAnswer('${userClues[1][0].answer}'); loadValue('${userClues[1][0].value}'); loadCurrentCell('1,0'); changeColor(this, '1,0');|"></td>
-                            <td id="2,0" th:text="'$' + ${userClues[2][0].value}" th:onclick="|addText('${userClues[2][0].question}'); loadAnswer('${userClues[2][0].answer}'); loadValue('${userClues[2][0].value}'); loadCurrentCell('2,0'); changeColor(this, '2,0');|"></td>
-                            <td id="3,0" th:text="'$' + ${userClues[3][0].value}" th:onclick="|addText('${userClues[3][0].question}'); loadAnswer('${userClues[3][0].answer}'); loadValue('${userClues[3][0].value}'); loadCurrentCell('3,0'); changeColor(this, '3,0');|"></td>
-                            <td id="4,0" th:text="'$' + ${userClues[4][0].value}" th:onclick="|addText('${userClues[4][0].question}'); loadAnswer('${userClues[4][0].answer}'); loadValue('${userClues[4][0].value}'); loadCurrentCell('4,0'); changeColor(this, '4,0');|"></td>
+                            <td id="0,0" th:text="'$' + ${userClues[0][0].value}" th:question="${userClues[0][0].question}" th:answer="${userClues[0][0].answer}" th:value="${userClues[0][0].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('0,0'); changeColor(this, '0,0');|"></td>
+                            <td id="1,0" th:text="'$' + ${userClues[1][0].value}" th:question="${userClues[1][0].question}" th:answer="${userClues[1][0].answer}" th:value="${userClues[1][0].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('1,0'); changeColor(this, '1,0');|"></td>
+                            <td id="2,0" th:text="'$' + ${userClues[2][0].value}" th:question="${userClues[2][0].question}" th:answer="${userClues[2][0].answer}" th:value="${userClues[2][0].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('2,0'); changeColor(this, '2,0');|"></td>
+                            <td id="3,0" th:text="'$' + ${userClues[3][0].value}" th:question="${userClues[3][0].question}" th:answer="${userClues[3][0].answer}" th:value="${userClues[3][0].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('3,0'); changeColor(this, '3,0');|"></td>
+                            <td id="4,0" th:text="'$' + ${userClues[4][0].value}" th:question="${userClues[4][0].question}" th:answer="${userClues[4][0].answer}" th:value="${userClues[4][0].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('4,0'); changeColor(this, '4,0');|"></td>
+
+                            <!--<td id="1,0" th:text="'$' + ${userClues[1][0].value}" th:onclick="|addText('${userClues[1][0].question}'); loadAnswer('${userClues[1][0].answer}'); loadValue('${userClues[1][0].value}'); loadCurrentCell('1,0'); changeColor(this, '1,0');|"></td>-->
+                            <!--<td id="2,0" th:text="'$' + ${userClues[2][0].value}" th:onclick="|addText('${userClues[2][0].question}'); loadAnswer('${userClues[2][0].answer}'); loadValue('${userClues[2][0].value}'); loadCurrentCell('2,0'); changeColor(this, '2,0');|"></td>-->
+                            <!--<td id="3,0" th:text="'$' + ${userClues[3][0].value}" th:onclick="|addText('${userClues[3][0].question}'); loadAnswer('${userClues[3][0].answer}'); loadValue('${userClues[3][0].value}'); loadCurrentCell('3,0'); changeColor(this, '3,0');|"></td>-->
+                            <!--<td id="4,0" th:text="'$' + ${userClues[4][0].value}" th:onclick="|addText('${userClues[4][0].question}'); loadAnswer('${userClues[4][0].answer}'); loadValue('${userClues[4][0].value}'); loadCurrentCell('4,0'); changeColor(this, '4,0');|"></td>-->
                         </tr>
                         <tr>
-                            <td id="0,1" th:text="'$' + ${userClues[0][1].value}" th:onclick="|addText('${userClues[0][1].question}'); loadAnswer('${userClues[0][1].answer}'); loadValue('${userClues[0][1].value}'); loadCurrentCell('0,1'); changeColor(this, '0,1');|"></td>
-                            <td id="1,1" th:text="'$' + ${userClues[1][1].value}" th:onclick="|addText('${userClues[1][1].question}'); loadAnswer('${userClues[1][1].answer}'); loadValue('${userClues[1][1].value}'); loadCurrentCell('1,1'); changeColor(this, '1,1');|"></td>
-                            <td id="2,1" th:text="'$' + ${userClues[2][1].value}" th:onclick="|addText('${userClues[2][1].question}'); loadAnswer('${userClues[2][1].answer}'); loadValue('${userClues[2][1].value}'); loadCurrentCell('2,1'); changeColor(this, '2,1');|"></td>
-                            <td id="3,1" th:text="'$' + ${userClues[3][1].value}" th:onclick="|addText('${userClues[3][1].question}'); loadAnswer('${userClues[3][1].answer}'); loadValue('${userClues[3][1].value}'); loadCurrentCell('3,1'); changeColor(this, '3,1');|"></td>
-                            <td id="4,1" th:text="'$' + ${userClues[4][1].value}" th:onclick="|addText('${userClues[4][1].question}'); loadAnswer('${userClues[4][1].answer}'); loadValue('${userClues[4][1].value}'); loadCurrentCell('4,1'); changeColor(this, '4,1');|"></td>
+                            <td id="0,1" th:text="'$' + ${userClues[0][1].value}" th:question="${userClues[0][1].question}" th:answer="${userClues[0][1].answer}" th:value="${userClues[0][1].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('0,1'); changeColor(this, '0,1');|"></td>
+                            <td id="1,1" th:text="'$' + ${userClues[1][1].value}" th:question="${userClues[1][1].question}" th:answer="${userClues[1][1].answer}" th:value="${userClues[1][1].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('1,1'); changeColor(this, '1,1');|"></td>
+                            <td id="2,1" th:text="'$' + ${userClues[2][1].value}" th:question="${userClues[2][1].question}" th:answer="${userClues[2][1].answer}" th:value="${userClues[2][1].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('2,1'); changeColor(this, '2,1');|"></td>
+                            <td id="3,1" th:text="'$' + ${userClues[3][1].value}" th:question="${userClues[3][1].question}" th:answer="${userClues[3][1].answer}" th:value="${userClues[3][1].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('3,1'); changeColor(this, '3,1');|"></td>
+                            <td id="4,1" th:text="'$' + ${userClues[4][1].value}" th:question="${userClues[4][1].question}" th:answer="${userClues[4][1].answer}" th:value="${userClues[4][1].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('4,1'); changeColor(this, '4,1');|"></td>
+
+                            <!--<td id="0,1" th:text="'$' + ${userClues[0][1].value}" th:onclick="|addText('${userClues[0][1].question}'); loadAnswer('${userClues[0][1].answer}'); loadValue('${userClues[0][1].value}'); loadCurrentCell('0,1'); changeColor(this, '0,1');|"></td>-->
+                            <!--<td id="1,1" th:text="'$' + ${userClues[1][1].value}" th:onclick="|addText('${userClues[1][1].question}'); loadAnswer('${userClues[1][1].answer}'); loadValue('${userClues[1][1].value}'); loadCurrentCell('1,1'); changeColor(this, '1,1');|"></td>-->
+                            <!--<td id="2,1" th:text="'$' + ${userClues[2][1].value}" th:onclick="|addText('${userClues[2][1].question}'); loadAnswer('${userClues[2][1].answer}'); loadValue('${userClues[2][1].value}'); loadCurrentCell('2,1'); changeColor(this, '2,1');|"></td>-->
+                            <!--<td id="3,1" th:text="'$' + ${userClues[3][1].value}" th:onclick="|addText('${userClues[3][1].question}'); loadAnswer('${userClues[3][1].answer}'); loadValue('${userClues[3][1].value}'); loadCurrentCell('3,1'); changeColor(this, '3,1');|"></td>-->
+                            <!--<td id="4,1" th:text="'$' + ${userClues[4][1].value}" th:onclick="|addText('${userClues[4][1].question}'); loadAnswer('${userClues[4][1].answer}'); loadValue('${userClues[4][1].value}'); loadCurrentCell('4,1'); changeColor(this, '4,1');|"></td>-->
                         </tr>
                         <tr>
-                            <td id="0,2" th:text="'$' + ${userClues[0][2].value}" th:onclick="|addText('${userClues[0][2].question}'); loadAnswer('${userClues[0][2].answer}'); loadValue('${userClues[0][2].value}'); loadCurrentCell('0,2'); changeColor(this, '0,2');|"></td>
-                            <td id="1,2" th:text="'$' + ${userClues[1][2].value}" th:onclick="|addText('${userClues[1][2].question}'); loadAnswer('${userClues[1][2].answer}'); loadValue('${userClues[1][2].value}'); loadCurrentCell('1,2'); changeColor(this, '1,2');|"></td>
-                            <td id="2,2" th:text="'$' + ${userClues[2][2].value}" th:onclick="|addText('${userClues[2][2].question}'); loadAnswer('${userClues[2][2].answer}'); loadValue('${userClues[2][2].value}'); loadCurrentCell('2,2'); changeColor(this, '2,2');|"></td>
-                            <td id="3,2" th:text="'$' + ${userClues[3][2].value}" th:onclick="|addText('${userClues[3][2].question}'); loadAnswer('${userClues[3][2].answer}'); loadValue('${userClues[3][2].value}'); loadCurrentCell('3,2'); changeColor(this, '3,2');|"></td>
-                            <td id="4,2" th:text="'$' + ${userClues[4][2].value}" th:onclick="|addText('${userClues[4][2].question}'); loadAnswer('${userClues[4][2].answer}'); loadValue('${userClues[4][2].value}'); loadCurrentCell('4,2'); changeColor(this, '4,2');|"></td>
+                            <td id="0,2" th:text="'$' + ${userClues[0][2].value}" th:question="${userClues[0][2].question}" th:answer="${userClues[0][2].answer}" th:value="${userClues[0][2].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('0,2'); changeColor(this, '0,2');|"></td>
+                            <td id="1,2" th:text="'$' + ${userClues[1][2].value}" th:question="${userClues[1][2].question}" th:answer="${userClues[1][2].answer}" th:value="${userClues[1][2].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('1,2'); changeColor(this, '1,2');|"></td>
+                            <td id="2,2" th:text="'$' + ${userClues[2][2].value}" th:question="${userClues[2][2].question}" th:answer="${userClues[2][2].answer}" th:value="${userClues[2][2].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('2,2'); changeColor(this, '2,2');|"></td>
+                            <td id="3,2" th:text="'$' + ${userClues[3][2].value}" th:question="${userClues[3][2].question}" th:answer="${userClues[3][2].answer}" th:value="${userClues[3][2].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('3,2'); changeColor(this, '3,2');|"></td>
+                            <td id="4,2" th:text="'$' + ${userClues[4][2].value}" th:question="${userClues[4][2].question}" th:answer="${userClues[4][2].answer}" th:value="${userClues[4][2].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('4,2'); changeColor(this, '4,2');|"></td>
+
+                            <!--<td id="0,2" th:text="'$' + ${userClues[0][2].value}" th:onclick="|addText('${userClues[0][2].question}'); loadAnswer('${userClues[0][2].answer}'); loadValue('${userClues[0][2].value}'); loadCurrentCell('0,2'); changeColor(this, '0,2');|"></td>-->
+                            <!--<td id="1,2" th:text="'$' + ${userClues[1][2].value}" th:onclick="|addText('${userClues[1][2].question}'); loadAnswer('${userClues[1][2].answer}'); loadValue('${userClues[1][2].value}'); loadCurrentCell('1,2'); changeColor(this, '1,2');|"></td>-->
+                            <!--<td id="2,2" th:text="'$' + ${userClues[2][2].value}" th:onclick="|addText('${userClues[2][2].question}'); loadAnswer('${userClues[2][2].answer}'); loadValue('${userClues[2][2].value}'); loadCurrentCell('2,2'); changeColor(this, '2,2');|"></td>-->
+                            <!--<td id="3,2" th:text="'$' + ${userClues[3][2].value}" th:onclick="|addText('${userClues[3][2].question}'); loadAnswer('${userClues[3][2].answer}'); loadValue('${userClues[3][2].value}'); loadCurrentCell('3,2'); changeColor(this, '3,2');|"></td>-->
+                            <!--<td id="4,2" th:text="'$' + ${userClues[4][2].value}" th:onclick="|addText('${userClues[4][2].question}'); loadAnswer('${userClues[4][2].answer}'); loadValue('${userClues[4][2].value}'); loadCurrentCell('4,2'); changeColor(this, '4,2');|"></td>-->
                         </tr>
                         <tr>
-                            <td id="0,3" th:text="'$' + ${userClues[0][3].value}" th:onclick="|addText('${userClues[0][3].question}'); loadAnswer('${userClues[0][3].answer}'); loadValue('${userClues[0][3].value}'); loadCurrentCell('0,3'); changeColor(this, '0,3');|"></td>
-                            <td id="1,3" th:text="'$' + ${userClues[1][3].value}" th:onclick="|addText('${userClues[1][3].question}'); loadAnswer('${userClues[1][3].answer}'); loadValue('${userClues[1][3].value}'); loadCurrentCell('1,3'); changeColor(this, '1,3');|"></td>
-                            <td id="2,3" th:text="'$' + ${userClues[2][3].value}" th:onclick="|addText('${userClues[2][3].question}'); loadAnswer('${userClues[2][3].answer}'); loadValue('${userClues[2][3].value}'); loadCurrentCell('2,3'); changeColor(this, '2,3');|"></td>
-                            <td id="3,3" th:text="'$' + ${userClues[3][3].value}" th:onclick="|addText('${userClues[3][3].question}'); loadAnswer('${userClues[3][3].answer}'); loadValue('${userClues[3][3].value}'); loadCurrentCell('3,3'); changeColor(this, '3,3');|"></td>
-                            <td id="4,3" th:text="'$' + ${userClues[4][3].value}" th:onclick="|addText('${userClues[4][3].question}'); loadAnswer('${userClues[4][3].answer}'); loadValue('${userClues[4][3].value}'); loadCurrentCell('4,3'); changeColor(this, '4,3');|"></td>
+                            <td id="0,3" th:text="'$' + ${userClues[0][3].value}" th:question="${userClues[0][3].question}" th:answer="${userClues[0][3].answer}" th:value="${userClues[0][3].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('0,3'); changeColor(this, '0,3');|"></td>
+                            <td id="1,3" th:text="'$' + ${userClues[1][3].value}" th:question="${userClues[1][3].question}" th:answer="${userClues[1][3].answer}" th:value="${userClues[1][3].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('1,3'); changeColor(this, '1,3');|"></td>
+                            <td id="2,3" th:text="'$' + ${userClues[2][3].value}" th:question="${userClues[2][3].question}" th:answer="${userClues[2][3].answer}" th:value="${userClues[2][3].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('2,3'); changeColor(this, '2,3');|"></td>
+                            <td id="3,3" th:text="'$' + ${userClues[3][3].value}" th:question="${userClues[3][3].question}" th:answer="${userClues[3][3].answer}" th:value="${userClues[3][3].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('3,3'); changeColor(this, '3,3');|"></td>
+                            <td id="4,3" th:text="'$' + ${userClues[4][3].value}" th:question="${userClues[4][3].question}" th:answer="${userClues[4][3].answer}" th:value="${userClues[4][3].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('4,3'); changeColor(this, '4,3');|"></td>
+
+                            <!--<td id="0,3" th:text="'$' + ${userClues[0][3].value}" th:onclick="|addText('${userClues[0][3].question}'); loadAnswer('${userClues[0][3].answer}'); loadValue('${userClues[0][3].value}'); loadCurrentCell('0,3'); changeColor(this, '0,3');|"></td>-->
+                            <!--<td id="1,3" th:text="'$' + ${userClues[1][3].value}" th:onclick="|addText('${userClues[1][3].question}'); loadAnswer('${userClues[1][3].answer}'); loadValue('${userClues[1][3].value}'); loadCurrentCell('1,3'); changeColor(this, '1,3');|"></td>-->
+                            <!--<td id="2,3" th:text="'$' + ${userClues[2][3].value}" th:onclick="|addText('${userClues[2][3].question}'); loadAnswer('${userClues[2][3].answer}'); loadValue('${userClues[2][3].value}'); loadCurrentCell('2,3'); changeColor(this, '2,3');|"></td>-->
+                            <!--<td id="3,3" th:text="'$' + ${userClues[3][3].value}" th:onclick="|addText('${userClues[3][3].question}'); loadAnswer('${userClues[3][3].answer}'); loadValue('${userClues[3][3].value}'); loadCurrentCell('3,3'); changeColor(this, '3,3');|"></td>-->
+                            <!--<td id="4,3" th:text="'$' + ${userClues[4][3].value}" th:onclick="|addText('${userClues[4][3].question}'); loadAnswer('${userClues[4][3].answer}'); loadValue('${userClues[4][3].value}'); loadCurrentCell('4,3'); changeColor(this, '4,3');|"></td>-->
                         </tr>
                         <tr>
-                            <td id="0,4" th:text="'$' + ${userClues[0][4].value}" th:onclick="|addText('${userClues[0][4].question}'); loadAnswer('${userClues[0][4].answer}'); loadValue('${userClues[0][4].value}'); loadCurrentCell('0,4'); changeColor(this, '0,4');|"></td>
-                            <td id="1,4" th:text="'$' + ${userClues[1][4].value}" th:onclick="|addText('${userClues[1][4].question}'); loadAnswer('${userClues[1][4].answer}'); loadValue('${userClues[1][4].value}'); loadCurrentCell('1,4'); changeColor(this, '1,4');|"></td>
-                            <td id="2,4" th:text="'$' + ${userClues[2][4].value}" th:onclick="|addText('${userClues[2][4].question}'); loadAnswer('${userClues[2][4].answer}'); loadValue('${userClues[2][4].value}'); loadCurrentCell('2,4'); changeColor(this, '2,4');|"></td>
-                            <td id="3,4" th:text="'$' + ${userClues[3][4].value}" th:onclick="|addText('${userClues[3][4].question}'); loadAnswer('${userClues[3][4].answer}'); loadValue('${userClues[3][4].value}'); loadCurrentCell('3,4'); changeColor(this, '3,4');|"></td>
-                            <td id="4,4" th:text="'$' + ${userClues[4][4].value}" th:onclick="|addText('${userClues[4][4].question}'); loadAnswer('${userClues[4][4].answer}'); loadValue('${userClues[4][4].value}'); loadCurrentCell('4,4'); changeColor(this, '4,4');|"></td>
+                            <td id="0,4" th:text="'$' + ${userClues[0][4].value}" th:question="${userClues[0][4].question}" th:answer="${userClues[0][4].answer}" th:value="${userClues[0][4].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('0,4'); changeColor(this, '0,4');|"></td>
+                            <td id="1,4" th:text="'$' + ${userClues[1][4].value}" th:question="${userClues[1][4].question}" th:answer="${userClues[1][4].answer}" th:value="${userClues[1][4].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('1,4'); changeColor(this, '1,4');|"></td>
+                            <td id="2,4" th:text="'$' + ${userClues[2][4].value}" th:question="${userClues[2][4].question}" th:answer="${userClues[2][4].answer}" th:value="${userClues[2][4].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('2,4'); changeColor(this, '2,4');|"></td>
+                            <td id="3,4" th:text="'$' + ${userClues[3][4].value}" th:question="${userClues[3][4].question}" th:answer="${userClues[3][4].answer}" th:value="${userClues[3][4].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('3,4'); changeColor(this, '3,4');|"></td>
+                            <td id="4,4" th:text="'$' + ${userClues[4][4].value}" th:question="${userClues[4][4].question}" th:answer="${userClues[4][4].answer}" th:value="${userClues[4][4].value}" th:onclick="|addText(this.getAttribute('question')); loadAnswer(this.getAttribute('answer')); loadValue(this.getAttribute('value')); loadCurrentCell('4,4'); changeColor(this, '4,4');|"></td>
+
+                            <!--<td id="0,4" th:text="'$' + ${userClues[0][4].value}" th:onclick="|addText('${userClues[0][4].question}'); loadAnswer('${userClues[0][4].answer}'); loadValue('${userClues[0][4].value}'); loadCurrentCell('0,4'); changeColor(this, '0,4');|"></td>-->
+                            <!--<td id="1,4" th:text="'$' + ${userClues[1][4].value}" th:onclick="|addText('${userClues[1][4].question}'); loadAnswer('${userClues[1][4].answer}'); loadValue('${userClues[1][4].value}'); loadCurrentCell('1,4'); changeColor(this, '1,4');|"></td>-->
+                            <!--<td id="2,4" th:text="'$' + ${userClues[2][4].value}" th:onclick="|addText('${userClues[2][4].question}'); loadAnswer('${userClues[2][4].answer}'); loadValue('${userClues[2][4].value}'); loadCurrentCell('2,4'); changeColor(this, '2,4');|"></td>-->
+                            <!--<td id="3,4" th:text="'$' + ${userClues[3][4].value}" th:onclick="|addText('${userClues[3][4].question}'); loadAnswer('${userClues[3][4].answer}'); loadValue('${userClues[3][4].value}'); loadCurrentCell('3,4'); changeColor(this, '3,4');|"></td>-->
+                            <!--<td id="4,4" th:text="'$' + ${userClues[4][4].value}" th:onclick="|addText('${userClues[4][4].question}'); loadAnswer('${userClues[4][4].answer}'); loadValue('${userClues[4][4].value}'); loadCurrentCell('4,4'); changeColor(this, '4,4');|"></td>-->
                         </tr>
 
                     </tbody>
@@ -156,9 +181,9 @@
 
         </div>
 
-        <!--                                                                        -->
-        <!--   The Question Display, Jeopardy style (what Alex Trebek would read)   -->
-        <!--                                                                        -->
+        <!-----------------------------------------------------------------------------\/---->
+        <!--   The Question Display, Jeopardy style (what Alex Trebek would read)   ---\/---->
+        <!-----------------------------------------------------------------------------\/---->
 
         <div class="right-half">
             <table class="t2">
@@ -240,6 +265,82 @@
             }
 
 
+
+            function distance(s1, s2) {
+              var m = 0;
+              var i;
+              var j;
+
+              // Exit early if either are empty.
+              if (s1.length === 0 || s2.length === 0) {
+                return 0;
+                }
+
+
+                // Exit early if they're an exact match.
+                if (s1 === s2) {
+                  return 1;
+                }
+
+                var range = (Math.floor(Math.max(s1.length, s2.length) / 2)) - 1;
+                var s1Matches = new Array(s1.length);
+                var s2Matches = new Array(s2.length);
+
+                for (i = 0; i < s1.length; i++) {
+                  var low  = (i >= range) ? i - range : 0;
+                  var high = (i + range <= (s2.length - 1)) ? (i + range) : (s2.length - 1);
+
+                  for (j = low; j <= high; j++) {
+                    if (s1Matches[i] !== true && s2Matches[j] !== true && s1[i] === s2[j]) {
+                      ++m;
+                      s1Matches[i] = s2Matches[j] = true;
+                      break;
+                    }
+                  }
+                }
+
+                // Exit early if no matches were found.
+                if (m === 0) {
+                  return 0;
+                }
+
+                // Count the transpositions.
+                var k = 0;
+                var numTrans = 0;
+
+                for (i = 0; i < s1.length; i++) {
+                  if (s1Matches[i] === true) {
+                    for (j = k; j < s2.length; j++) {
+                      if (s2Matches[j] === true) {
+                        k = j + 1;
+                        break;
+                      }
+                    }
+
+                    if (s1[i] !== s2[j]) {
+                      ++numTrans;
+                    }
+                  }
+                }
+
+                var weight = (m / s1.length + m / s2.length + (m - (numTrans / 2)) / m) / 3;
+                var l = 0;
+                var p = 0.1;
+
+                if (weight > 0.7) {
+                  while (s1[l] === s2[l] && l < 4) {
+                    ++l;
+                  }
+
+                  weight = weight + l * p * (1 - weight);
+                }
+
+                return weight;
+              }
+
+
+
+
             var locationArray = new Array(25);
             var counter = 0;
 
@@ -259,10 +360,15 @@
 
                 } else {
 
-                    if (userAnswer != actualAnswer){
+                  var u = userAnswer;
+                  var a = actualAnswer;
+
+                  var correctness = distance(u, a);
+
+                    if (correctness < 0.75){
 
                         user_score.innerHTML = updated_score - questionValue;
-                        window.alert("Wrong. Too bad! | " + userAnswer + " | " + actualAnswer + " | " + user_score.innerHTML + " | " + updated_score);
+                        window.alert("Wrong. Too bad! The answer was: " + actualAnswer + " | " + userAnswer + " | " + updated_score + " | " + correctness);
                         disableTableCell(location);
                         locationArray[counter] = location;
                         counter++;
@@ -270,7 +376,7 @@
                     } else {
 
                         user_score.innerHTML = ((-1) * ((updated_score * -1) - questionValue));
-                        window.alert("Correct! | " + userAnswer + " | " + actualAnswer + " | " + user_score.innerHTML + " | " + updated_score);
+                        window.alert("Correct! | " + userAnswer + " | " + actualAnswer + " | " + user_score.innerHTML + " | " + updated_score + " | " + correctness);
                         disableTableCell(location);
                         locationArray[counter] = location;
                         counter++;
@@ -278,20 +384,26 @@
                 }
             }
 
+
         // ]]>
     </script>
 
-    <!--                                                          -->
-    <!--   Commented out question data for development purposes   -->
-    <!--                                                          -->
+    <!---------------------------------------------------------->
+    <!-- Commented out question data for development purposes -->
+    <!---------------------------------------------------------->
 
-    <!--<p th:text="${userClues[0][0].category.id} + ' | ' + ${userClues[0][0].category.title} + ' | ' + ${userClues[0][0].question} + ' | ' + ${userClues[0][0].answer} "></p>-->
-    <!--<p th:text="${userClues[0][1].category.id} + ' | ' + ${userClues[0][1].category.title} + ' | ' + ${userClues[0][1].question} + ' | ' + ${userClues[0][1].answer} "></p>-->
-    <!--<p th:text="${userClues[0][2].category.id} + ' | ' + ${userClues[0][2].category.title} + ' | ' + ${userClues[0][2].question} + ' | ' + ${userClues[0][2].answer} "></p>-->
-    <!--<p th:text="${userClues[0][3].category.id} + ' | ' + ${userClues[0][3].category.title} + ' | ' + ${userClues[0][3].question} + ' | ' + ${userClues[0][3].answer} "></p>-->
-    <!--<p th:text="${userClues[0][4].category.id} + ' | ' + ${userClues[0][4].category.title} + ' | ' + ${userClues[0][4].question} + ' | ' + ${userClues[0][4].answer} "></p>-->
+    <p th:text="${userClues[0][0].category.id} + ' | ' + ${userClues[0][0].category.title} + ' | ' + ${userClues[0][0].question} + ' | ' + ${userClues[0][0].answer} "></p>
+    <p th:text="${userClues[0][1].category.id} + ' | ' + ${userClues[0][1].category.title} + ' | ' + ${userClues[0][1].question} + ' | ' + ${userClues[0][1].answer} "></p>
+    <p th:text="${userClues[0][2].category.id} + ' | ' + ${userClues[0][2].category.title} + ' | ' + ${userClues[0][2].question} + ' | ' + ${userClues[0][2].answer} "></p>
+    <p th:text="${userClues[0][3].category.id} + ' | ' + ${userClues[0][3].category.title} + ' | ' + ${userClues[0][3].question} + ' | ' + ${userClues[0][3].answer} "></p>
+    <p th:text="${userClues[0][4].category.id} + ' | ' + ${userClues[0][4].category.title} + ' | ' + ${userClues[0][4].question} + ' | ' + ${userClues[0][4].answer} "></p>
 
-
+    <!--/////////////////////////////////////|-->
+    <!--//                                 _||_-->
+    <!--//   Jaro-Winkler distance metric  \  /-->
+    <!--//   to compare answers             \/-->
+    <!--//                                     ||-->
+    <!--/////////////////////////////////////////-->
 </div>
 
 </body>

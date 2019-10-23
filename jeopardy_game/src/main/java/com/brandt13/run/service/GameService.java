@@ -92,7 +92,7 @@ public class GameService {
 
                 if (numClues == 1) {
                     String question = currentValueArray[0].getQuestion().toUpperCase();
-                    String replaced = question.replace("'", "\\\'");
+                    String replaced = question.replace("'", "\'");
                     currentValueArray[0].setQuestion(replaced);
 
                     userClues[i][j] = currentValueArray[0];
@@ -104,7 +104,7 @@ public class GameService {
 
                     if (randomClue == 1) {
                         String question = currentValueArray[0].getQuestion().toUpperCase();
-                        String replaced = question.replace("'", "\\\'");
+                        String replaced = question.replace("'", "\'");
                         currentValueArray[0].setQuestion(replaced);
 
                         userClues[i][j] = currentValueArray[0];
@@ -112,14 +112,14 @@ public class GameService {
                     } else if (randomClue == 2) {
 
                         String question = currentValueArray[1].getQuestion().toUpperCase();
-                        String replaced = question.replace("'", "\\\'");
+                        String replaced = question.replace("'", "\'");
                         currentValueArray[1].setQuestion(replaced);
 
                         userClues[i][j] = currentValueArray[1];
                     } else {
 
                         String question = currentValueArray[randomClue - 1].getQuestion().toUpperCase();
-                        String replaced = question.replace("'", "\\\'");
+                        String replaced = question.replace("'", "\'");
                         currentValueArray[randomClue - 1].setQuestion(replaced);
 
                         userClues[i][j] = currentValueArray[randomClue - 1];
@@ -147,7 +147,6 @@ public class GameService {
             Arrays.fill(blankClue, null);
 
             do {
-
                 String clueQuery = "http://jservice.io/api/clues?category=" + randomCN;
 
                 clues = restTemplate.getForObject(clueQuery, Clue[].class);
@@ -166,7 +165,6 @@ public class GameService {
                 if (clues.length == 0){
                     randomCN = categoryNumber.nextInt(highCN - lowCN) + lowCN;
                 }
-
             } while (clues.length == 0);
 
             for (int j = 0; j < 5; j++) {
@@ -193,7 +191,7 @@ public class GameService {
 
                 if (numClues == 1) {
                     String question = currentValueArray[0].getQuestion().toUpperCase();
-                    String replaced = question.replace("'", "\\\'");
+                    String replaced = question.replace("'", "\'");
                     currentValueArray[0].setQuestion(replaced);
 
                     userClues[i][j] = currentValueArray[0];
@@ -205,7 +203,7 @@ public class GameService {
 
                     if (randomClue == 1) {
                         String question = currentValueArray[0].getQuestion().toUpperCase();
-                        String replaced = question.replace("'", "\\\'");
+                        String replaced = question.replace("'", "\'");
                         currentValueArray[0].setQuestion(replaced);
 
                         userClues[i][j] = currentValueArray[0];
@@ -213,14 +211,14 @@ public class GameService {
                     } else if (randomClue == 2) {
 
                         String question = currentValueArray[1].getQuestion().toUpperCase();
-                        String replaced = question.replace("'", "\\\'");
+                        String replaced = question.replace("'", "\'");
                         currentValueArray[1].setQuestion(replaced);
 
                         userClues[i][j] = currentValueArray[1];
                     } else {
 
                         String question = currentValueArray[randomClue - 1].getQuestion().toUpperCase();
-                        String replaced = question.replace("'", "\\\'");
+                        String replaced = question.replace("'", "\'");
                         currentValueArray[randomClue - 1].setQuestion(replaced);
 
                         userClues[i][j] = currentValueArray[randomClue - 1];
@@ -241,8 +239,8 @@ public class GameService {
         finalClue = restTemplate.getForObject(clueQuery, Clue[].class);
 
         String question = finalClue[0].getQuestion().toUpperCase();
-//        String replaced = question.replace("'","\\\'");
-        finalClue[0].setQuestion(question);
+        String replaced = question.replace("'","\'");
+        finalClue[0].setQuestion(replaced);
 
         return finalClue;
     }
