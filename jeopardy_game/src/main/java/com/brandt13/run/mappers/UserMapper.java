@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Update;
 @Mapper
 public interface UserMapper {
 
-        String UPDATE_USER = "UPDATE `jeopardyGame`.`user` SET high_score = #{high_score} WHERE user_id = #{user_id}";
+        String UPDATE_USER = "UPDATE `db_jeopardy_july_21`.`user` SET high_score = #{high_score} WHERE user_id = #{user_id}";
 
         @Update(UPDATE_USER)
         public int updateUser (User user);

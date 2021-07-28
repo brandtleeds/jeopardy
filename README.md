@@ -1,6 +1,23 @@
-# pProjects
+d# pProjects
 
 In this repository are my most recent Portfolio-level Projects, hence "pProjects." The projects will be listed in chronological order with the newest versions of projects at the top and the project's name and commit date in italics.
+
+<b>July 2021</b>
+
+<i>A Game of Jeopardy! 0.7 - 7/28/2021</i>
+
+  • Got the game online at: http://34.222.120.111:8080/jeopardy_v0.7/
+  • Cleaned up the interface
+
+  It's been a long time! I took a long break from programming to explore other things. I'm back.
+
+  I have got an instance of my Jeopardy game working on AWS, using EC2 and RDS. The game runs on a Tomcat server. Finally you can play vintage Jeopardy to your heart's content. :)
+
+  To do:
+
+    • Make the spell check more robust, fixing the previously mentioned issues.
+
+  Languages/Tools used: Java, Spring Boot, Tomcat, SQL, Hibernate, HTML, CSS, JavaScript, Thymeleaf
 
 <b>October 2019</b>
 
@@ -39,9 +56,7 @@ In this repository are my most recent Portfolio-level Projects, hence "pProjects
 
   This trivia game calls an API, http://jservice.io , and returns 25 questions each to a single and double Jeopardy! board. Basic auth along with a password encoder is used to keep track of players' data in a database. 
 
-  On my second commit of this project, I have used JavaScript along with Thymeleaf to give the table that displays the Question Board the ability to remember which cell has been clicked on, and whether or not that particular cell's question has been answered. The score is remembered for the user (which is currently known as 'admin', that is to say that every user who creates an account is also an 'admin') throughout the 25 questions. The user can then click on "Go to Double Jeopardy!" and go to a round where the scores are doubled.
-
-  Languages used: Java, Thymeleaf, SQL, HTML, CSS, JavaScript
+  On my second commit of this project, I have used JavaScript along with Thymeleaf to give the table that displays the Question Board the ability to remember which cell has been clicked on, and whether or not that particular cell's question has been answered. The score is remembered for the user throughout the 25 questions. The user can then click on "Go to Double Jeopardy!" and go to a round where the scores are doubled.
 
 <i>Issues:</i>
 
