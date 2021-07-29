@@ -1,6 +1,6 @@
-## H2 pProjects
+## Portfolio Projects
 
-In this repository are my most recent Portfolio-level Projects, hence "pProjects." The projects will be listed in chronological order with the newest versions of projects at the top and the project's name and commit date in italics.
+In this repository are my most recent Portfolio-level Projects. The projects will be listed in chronological order with the newest versions of projects at the top and the project's name and commit date in italics.
 
 <b>July 2021</b>
 
