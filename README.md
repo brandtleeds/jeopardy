@@ -8,7 +8,7 @@ In this repository are my most recent Portfolio-level Projects. The projects wil
 
   • Got the game online at: http://34.222.120.111:8080/jeopardy_v0.7/
   • Cleaned up the interface
-
+  
   It's been a long time! I took a long break from programming to explore other things. I'm back.
 
   I have got an instance of my Jeopardy game working on AWS, using EC2 and RDS. The game runs on a Tomcat server. Finally you can play vintage Jeopardy to your heart's content. :)
