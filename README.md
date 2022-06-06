@@ -6,7 +6,7 @@ In this repository are my most recent Portfolio-level Projects. The projects wil
 
 <i>A Game of Jeopardy! 0.7 - 7/28/2021</i>
 
-  • Got the game online at: http://34.222.120.111:8080/jeopardy_v0.7/
+  • Got the game online at: http://bit.ly/brandts_jeopardy
 
   • Cleaned up the interface
 
